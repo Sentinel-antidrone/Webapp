@@ -1,7 +1,7 @@
 {
-    "name": "anti-drone",
+    "name": "sentinel",
     "version": "1.0.0",
-    "description": "Anti-Drone Detection System Website",
+    "description": "Sentinel Anti-Drone Detection System Website",
     "scripts": {
       "dev": "npx serve",
       "build": "echo 'No build step needed'"
