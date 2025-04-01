@@ -114,3 +114,22 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# found this online:
+# import requests
+# import time
+#
+# API_URL = "https://your-webapp.com/api/data"
+# API_KEY = "your_api_key_here"
+#
+# while True:
+#     sensor_data = {"temperature": 25.5, "humidity": 60}  # Replace with real sensor data
+#     headers = {"Authorization": f"Bearer {API_KEY}"}
+#     
+#     try:
+#         response = requests.post(API_URL, json=sensor_data, headers=headers)
+#         print("Data sent:", response.status_code)
+#     except Exception as e:
+#         print("Error:", e)
+#     
+#     time.sleep(10)  # Send every 10 seconds

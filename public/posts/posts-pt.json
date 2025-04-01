@@ -4,34 +4,34 @@
         "date": "15 de março de 2025",
         "content": "Esta semana, alcançámos progressos significativos no treino do nosso modelo de aprendizado de máquina. Temos vindo a refinar o algoritmo, focando-nos em melhorar a sua precisão na distinção entre drones e outros objetos, como pássaros. Cada iteração aproxima-nos de um sistema de deteção mais fiável e eficiente...",
         "image": "/public/images/post_5.jpg",
-        "link": "post_5.html"
+        "link": "/public/posts/post_5.html"
     },
     {
         "title": "Atualização de Progresso: Aperfeiçoamento do Aprendizado de Máquina e Perspetivas da Indústria",
         "date": "8 de março de 2025",
         "content": "Esta semana marcou um progresso significativo no nosso projeto, especialmente em duas áreas-chave: o aperfeiçoamento do nosso modelo de aprendizado de máquina e discussões enriquecedoras com especialistas da indústria...",
         "image": "/public/images/post_4.jpg",
-        "link": "post_4.html"
+        "link": "/public/posts/post_4.html"
     },
     {
         "title": "Atualização de Progresso: Treino do Modelo e Finalização dos Componentes",
         "date": "1 de março de 2025",
         "content": "Esta semana, começámos o treino do algoritmo de aprendizagem automática que irá alimentar o nosso sistema de deteção de drones: o YOLO v11. Até agora, treinámos o modelo com aproximadamente 10.000 imagens, mas ainda há um longo caminho a percorrer em termos de aperfeiçoamento e melhoria da sua precisão. O processo de afinação do modelo continuará, à medida que procuramos otimizar o seu desempenho para cenários reais de deteção...",
         "image": "/public/images/post_3.jpg",
-        "link": "post_3.html"
+        "link": "/public/posts/post_3.html"
     },
     {
         "title": "Finalização da Nossa Proposta de Projeto: Foco na Deteção e em Soluções Baseadas em IA",
         "date": "21 de fevereiro de 2025",
         "content": "À medida que avançávamos com o nosso projeto, uma das fases mais cruciais foi a finalização da Proposta de Projeto e a definição da direção exata que tomaríamos. Depois de considerar várias abordagens e discutir as nossas opções com especialistas do setor, conseguimos afunilar o nosso foco e tomar decisões fundamentais sobre a estrutura do sistema...",
         "image": "/public/images/post_2.png",
-        "link": "post_2.html"
+        "link": "/public/posts/post_2.html"
     },
     {
         "title": "Modelação do Nosso Sistema de Deteção Anti-Drones: Do Conceito à Implementação",
         "date": "14 de fevereiro de 2025",
         "content": "Ao embarcarmos no desenvolvimento do nosso sistema de deteção e neutralização de drones, um dos primeiros desafios que enfrentámos foi definir a abordagem mais eficaz para a implementação. Com diversas tecnologias disponíveis e várias metodologias de deteção a considerar, dedicámos um tempo significativo à pesquisa e discussão antes de chegarmos a um plano concreto...",
         "image": "/public/images/post_1.jpg",
-        "link": "post_1.html"
+        "link": "/public/posts/post_1.html"
     }
 ]
