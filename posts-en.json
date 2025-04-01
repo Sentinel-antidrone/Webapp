@@ -1,0 +1,37 @@
+[
+    {
+        "title": "Progress on Our Anti-Drone Detection System",
+        "date": "March 15, 2025",
+        "content": "This week, we made significant progress in training our machine learning model. We've been refining the algorithm, focusing on improving its accuracy in distinguishing between drones and other objects like birds. Each iteration brings us closer to a reliable and efficient detection system...",
+        "image": "images/post_5.jpg",
+        "link": "post_5.html"
+    },
+    {
+        "title": "Progress Update: Improving Machine Learning and Industry Insights",
+        "date": "March 8, 2025",
+        "content": "This week marked significant progress in our project, particularly in two key areas: the enhancement of our machine learning model and insightful discussions with industry experts...",
+        "image": "images/post_4.jpg",
+        "link": "post_4.html"
+    },
+    {
+        "title": "Progress Update: Training the Model and Finalizing Components",
+        "date": "March 1, 2025",
+        "content": "This week, we began training the machine learning algorithm that will power our drone detection system: YOLO v11. So far, we have trained the model with approximately 10,000 images, but there is still a long way to go in terms of refining and improving its accuracy. The process of fine-tuning the model will continue as we aim to optimize its performance for real-world detection scenarios...",
+        "image": "images/post_3.jpg",
+        "link": "post_3.html"
+    },
+    {
+        "title": "Finalizing Our Project Proposal: Focusing on Detection and AI-Driven Solutions",
+        "date": "February 21, 2025",
+        "content": "As we moved forward with our project, one of the most crucial stages was finalizing our Project Proposal and defining the exact direction we would take. After considering several different approaches and discussing our options with industry experts, we were able to narrow down our focus and make the key decision on how we would structure our system...",
+        "image": "images/post_2.png",
+        "link": "post_2.html"
+    },
+    {
+        "title": "Shaping Our Anti-Drone Detection System: From Concept to Implementation",
+        "date": "February 14, 2025",
+        "content": "As we set out to develop our anti-drone detection and jamming system, one of the first challenges we faced was defining the most effective approach for implementation. With numerous technologies available and various detection methodologies to consider, we dedicated significant time to research and discussion before settling on a concrete plan...",
+        "image": "images/post_1.jpg",
+        "link": "post_1.html"
+    }
+]

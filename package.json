@@ -1,0 +1,15 @@
+{
+    "name": "anti-drone",
+    "version": "1.0.0",
+    "description": "Anti-Drone Detection System Website",
+    "scripts": {
+      "dev": "npx serve",
+      "build": "echo 'No build step needed'"
+    },
+    "engines": {
+      "node": ">=14.0.0"
+    },
+    "devDependencies": {
+      "serve": "^14.0.0"
+    }
+  }
