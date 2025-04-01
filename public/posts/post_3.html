@@ -287,6 +287,18 @@
             margin-bottom: 10;
         }
 
+        .post-content ul {
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        .post-content p + ul {
+            margin-top: 10;
+        }
+
+        .post-content ul + p {
+            margin-top: 15px;
+        }
+
         .nav-buttons {
             display: flex;
             justify-content: space-between;
@@ -440,6 +452,17 @@
 
         .menu-icon:hover {
             color: #007BFF;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        li {
+            margin-bottom: 0px;
         }
 
         /* Media Queries */
@@ -631,26 +654,30 @@
     </header>
     
     <section class="post-container">
-        <h1 data-en="Finalizing Our Project Proposal: Focusing on Detection and AI-Driven Solutions" data-pt="Finalização da Nossa Proposta de Projeto: Foco na Deteção e em Soluções Baseadas em IA"></h1>
+        <h1 data-en="Progress Update: Training the Model and Finalizing Components" data-pt="Atualização de Progresso: Treino do Modelo e Finalização dos Componentes">Test Post</h1>
         <div class="post-date">
             <strong data-en="Date:" data-pt="Data:">Date:</strong> 
-            <span data-en="February 21, 2025" data-pt="21 de fevereiro de 2025"></span>
+            <span data-en="March 1, 2025" data-pt="1 de março de 2025"></span>
         </div>
-        
         <div class="post-content">
-            <p data-en="As we moved forward with our project, one of the most crucial stages was finalizing our Project Proposal and defining the exact direction we would take. After considering several different approaches and discussing our options with industry experts, we were able to narrow down our focus and make the key decision on how we would structure our system." data-pt="À medida que avançávamos com o nosso projeto, uma das fases mais cruciais foi a finalização da Proposta de Projeto e a definição da direção exata que tomaríamos. Depois de considerar várias abordagens e discutir as nossas opções com especialistas do setor, conseguimos afunilar o nosso foco e tomar decisões fundamentais sobre a estrutura do sistema."></p>
-            <p data-en="Initially, we had considered integrating RF receivers for drone detection. However, after careful consideration, we quickly realized that this approach would not be feasible. Given the complexity of RF analysis and our limited expertise in this area, we decided to shift our focus to a more viable solution." data-pt="Inicialmente, ponderámos a integração de recetores de RF para a deteção de drones. No entanto, após uma análise cuidadosa, rapidamente percebemos que esta abordagem não seria viável. Dada a complexidade da análise de RF e a nossa experiência limitada nesta área, decidimos redirecionar o nosso foco para uma solução mais prática."></p>
-            <p data-en="We then explored the idea of using a radar in combination with a camera and a machine learning algorithm. The radar would detect objects, and the camera would activate to analyze the video feed, triggering the machine learning model to identify potential drones. However, upon researching the costs and complexities of acquiring or building a high-quality radar system, we realized that this solution was not realistic for our current capabilities and budget." data-pt="Explorámos então a ideia de utilizar um radar em combinação com uma câmara e um algoritmo de aprendizagem automática. O radar detetaria objetos, ativando a câmara para analisar o vídeo e acionando o modelo de aprendizagem automática para identificar potenciais drones. No entanto, após investigarmos os custos e a complexidade da aquisição ou construção de um sistema de radar de alta qualidade, percebemos que esta solução não era realista face às nossas atuais capacidades e orçamento."></p>
-            <p data-en="Additionally, we decided to develop a web application as part of our system. The web app will allow users to track the status of the system (whether it is online or offline) and view detailed information on the drones detected, including the number of drones detected and their respective locations. This will add a layer of interactivity and transparency to the system, making it more accessible and useful for end users." data-pt="Adicionalmente, decidimos desenvolver uma aplicação web como parte do nosso sistema. Esta aplicação permitirá aos utilizadores monitorizar o estado do sistema (se está online ou offline) e visualizar informações detalhadas sobre os drones detetados, incluindo o número de drones e as respetivas localizações. Esta funcionalidade adicionará uma camada de interatividade e transparência ao sistema, tornando-o mais acessível e útil para os utilizadores finais."></p>
-            <p data-en="We are excited about these decisions and confident that they will set the foundation for a successful project. In the coming weeks, we’ll be diving deeper into the development of the camera-based detection system, as well as the machine learning algorithms that will power our drone detection capabilities.Stay tuned for more updates!" data-pt="Estamos entusiasmados com estas decisões e confiantes de que estabelecerão a base para um projeto bem-sucedido. Nas próximas semanas, iremos aprofundar o desenvolvimento do sistema de deteção baseado em câmaras, bem como dos algoritmos de aprendizagem automática que irão potenciar as nossas capacidades de deteção de drones. Fiquem atentos para mais novidades!"></p>
+            <p data-en="This week, we began training the machine learning algorithm that will power our drone detection system: YOLO v11. So far, we have trained the model with approximately 10,000 images, but there is still a long way to go in terms of refining and improving its accuracy. The process of fine-tuning the model will continue as we aim to optimize its performance for real-world detection scenarios." data-pt="Esta semana, começámos o treino do algoritmo de aprendizagem automática que irá alimentar o nosso sistema de deteção de drones: o YOLO v11. Até agora, treinámos o modelo com aproximadamente 10.000 imagens, mas ainda há um longo caminho a percorrer em termos de aperfeiçoamento e melhoria da sua precisão. O processo de afinação do modelo continuará, à medida que procuramos otimizar o seu desempenho para cenários reais de deteção."></p>
+            <p data-en="Additionally, we have finalized the components that will be used to assemble our prototype. The selected hardware includes:" data-pt="Adicionalmente, finalizámos os componentes que serão utilizados para montar o nosso protótipo. O hardware selecionado inclui:"></p>
+            <ul>
+                <li><strong data-en="Microcomputer: Raspberry Pi 5 8GB - Raspberry Pi SC1112 " data-pt="Microcomputador: Raspberry Pi 5 8GB - Raspberry Pi SC1112 "></strong><a href="https://mauser.pt/catalog/product_info.php?products_id=095-5008" target="_blank">(Link)</a></li>
+                <li><strong data-en="Camera Module: Official Raspberry Pi Camera Module 3 (12MP, 76°) - SC0872 " data-pt="Módulo de Câmara: Módulo de Câmara Oficial Raspberry Pi 3 (12MP, 76°) - SC0872 "></strong><a href="https://mauser.pt/catalog/product_info.php?products_id=095-1253" target="_blank">(Link)</a></li>
+                <li><strong data-en="AI Accelerator: Raspberry Pi AI HAT+ with Hailo (26 TOPS) " data-pt="Acelerador de IA: Raspberry Pi AI HAT+ com Hailo (26 TOPS) "></strong><a href="https://mauser.pt/catalog/product_info.php?products_id=095-4440" target="_blank">(Link)</a></li>
+            </ul>
+            <p data-en="We are still uncertain whether we will be able to obtain this AI accelerator model or if we will have to opt for the downgraded version with 13 TOPS. Regardless, the project is progressing well, and we expect to place the necessary component orders by next week." data-pt="Ainda não temos certeza se conseguiremos obter este modelo de acelerador de IA ou se teremos que optar pela versão inferior com 13 TOPS. De qualquer forma, o projeto está a progredir bem e esperamos fazer os pedidos dos componentes necessários até à próxima semana."></p>
+            <p data-en="Stay tuned for more updates as we move closer to bringing our system to life!" data-pt="Fiquem atentos para mais atualizações à medida que nos aproximamos de dar vida ao nosso sistema!"></p>
         </div>
-        <img class="post-image" src="images/post_2.png" alt="Post image">
+        <img class="post-image" src="/public/images/post_3.jpg" alt="Post image">
         <div class="nav-buttons">
-            <button class="prev" onclick="window.location.href='post_1.html'">
+            <button class="prev" onclick="window.location.href='post_2.html'">
                 <span data-en="Previous Post" data-pt="Post Anterior">Previous Post</span>
             </button>
-            <button class="next" onclick="window.location.href='post_3.html'">
+            <button class="next" onclick="window.location.href='post_4.html'">
                 <span data-en="Next Post" data-pt="Próximo Post">Next Post</span>
+            </button>
         </div>
     </section>
 
@@ -659,23 +686,23 @@
         <div class="partners-container">
             <div class="partner-logo">
                 <a href="https://tecnico.ulisboa.pt" target="_blank">
-                    <img src="images/partner1.png" alt="Partner 1">
+                    <img src="/public/images/partner1.png" alt="Partner 1">
                 </a>
             </div>
             <div class="partner">
                 <a href="https://www.emfa.pt" target="_blank">
-                    <img class="partner-img light-mode" src="images/partner2l.png" alt="Partner 2">
-                    <img class="partner-img dark-mode" src="images/partner2d.png" alt="Partner 2 Dark Mode">
+                    <img class="partner-img light-mode" src="/public/images/partner2l.png" alt="Partner 2">
+                    <img class="partner-img dark-mode" src="/public/images/partner2d.png" alt="Partner 2 Dark Mode">
                 </a>
             </div>
             <div class="partner-logo">
                 <a href="https://www.thalesgroup.com" target="_blank">
-                    <img src="images/partner3.png" alt="Partner 3">
+                    <img src="/public/images/partner3.png" alt="Partner 3">
                 </a>
             </div>
             <div class="partner-logo">
                 <a href="https://mauser.pt" target="_blank">
-                    <img src="images/partner4.png" alt="Partner 4">
+                    <img src="/public/images/partner4.png" alt="Partner 4">
                 </a>
             </div>
         </div>
@@ -686,7 +713,8 @@
             <p>© 2025 - All Rights Reserved.</p>
             <div class="contact-details">
                 <h3 data-en="Contacts" data-pt="Contactos">Contacts</h3>
-                <p><strong data-en="Email:" data-pt="Email:">Email:</strong><a href="mailto:email.projeto@algo.com">email.projeto@algo.com</a></p>
+                <p><strong data-en="Address:" data-pt="Morada:">Address:</strong> Av. Rovisco Pais Nº1, 1049-001 Lisboa</p>
+                <p><strong data-en="Email:" data-pt="Email:">Email:</strong><a href="mailto:email.projeto@algo.com">email.projeto@algo.com</a></p> 
             </div>
             <div class="contact-form">
                 <h3 data-en="Write us" data-pt="Escreva-nos">Write us</h3>
@@ -706,7 +734,7 @@
             document.body.classList.add('dark-mode');
             document.getElementById('darkModeToggle').checked = true;
         }
-        
+
         document.getElementById("darkModeToggle").addEventListener("change", function () {
             const scrollPosition = window.scrollY;
     

@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sentinel Anti-Drone</title>
     <style>
@@ -14,7 +13,6 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 30px;
         }
 
         body {
@@ -58,32 +56,6 @@
         body.dark-mode {
             background-color: #121212;
             color: #ffffff;
-        }
-
-        .hero {
-            background-image: url('images/background.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            padding: 20px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin: 0;
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            margin-top: 10px;
         }
 
         header {
@@ -248,6 +220,12 @@
             transform: scale(1.05);
         }
 
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         #toggleLanguage.english {
             background-color: #007BFF;
         }
@@ -256,160 +234,101 @@
             background-color: #28a745;
         }
 
-        .about {
-            padding: 25px 20px;
+        .post-container {
+            max-width: 1320px;
+            max-width: 90%;
+            margin: 40px auto 20px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            max-width: 1000px;
-            margin: 0 auto;
         }
 
-        .about h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
+        body.dark-mode .post-container {
+            background: #1e1e1e;
         }
 
-        .about p {
-            font-size: 1.2rem;
-            line-height: 1.6;
+        .post-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
         }
 
-        .btn-pdf {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            font-size: 1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        body.dark-mode .post-container h1 {
+            color: #ffffff;
         }
 
-        .btn-pdf:hover {
-            background-color: #0056b3;
-        }
-
-        .team {
-            text-align: center;
-            width: 100%;
-            margin: 0 auto;
-            padding-top: 30px;
+        .post-date {
+            font-size: 1.1rem;
+            color: #666;
             margin-bottom: 20px;
         }
 
-        .team h2 {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 10px;
+        body.dark-mode .post-date {
+            color: #aaa;
         }
 
-        .team-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+        .post-content {
+            margin: 20px 0;
+            margin-top: 0px;
+            margin-bottom: 5px;
+            line-height: 1.6;
+            font-size: 1.0rem;
+            text-align: left;
+        }
+
+        .post-content p {
+        margin-bottom: 15px;
+        margin-top: 0;
+        }
+
+        .post-content p:last-child {
+            margin-bottom: 10;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
             gap: 20px;
-            justify-content: center;
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
         }
 
-        .team-member {
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            padding-bottom: 40px;
-        }
-
-        .team-member img {
-            width: 100%;
-            max-width: 150px;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .team-member .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+        .nav-buttons button {
+            padding: 12px 24px;
+            background-color: #007BFF;
             color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-width: 140px;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-            border-radius: 10px;
-            text-align: center;
-            padding: 10px;
+            gap: 8px;
         }
 
-        .team-member:hover img {
-            opacity: 0.3;
+        .nav-buttons button:hover {
+            background-color: #0056b3;
+            transform: translateX(0);
         }
 
-        .team-member:hover .overlay {
-            opacity: 1;
+        .nav-buttons button.prev:hover {
+            transform: translateX(-5px);
         }
 
-        .social-icons {
-            margin-top: 10px;
-            position: absolute;
-            bottom: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
+        .nav-buttons button.next:hover {
+            transform: translateX(5px);
         }
 
-        .social-icons a {
-            text-decoration: none;
-            font-size: 20px;
-            color: #333;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 30px;
-            height: 30px;
-        }
-
-        .social-icons a:hover {
-            color: #0073b1;
-        }
-
-        .project {
-            text-align: center;
-            padding: 25px 20px;
-        }
-
-        .project h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .project img {
-            display: block; 
-            margin: 0 auto; 
-            max-width: 100%; 
-            height: auto; 
-        }
-
-        .video-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .video-container iframe {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        .post-image {
+            max-width: 50%;
+            height: auto;
+            margin: 20px 0;
+            margin-top: 0px;
+            border-radius: 8px;
         }
 
         .partners-section {
@@ -523,6 +442,7 @@
             color: #007BFF;
         }
 
+        /* Media Queries */
         @media (max-width: 768px) {
             .menu-icon {
                 display: block;
@@ -579,6 +499,14 @@
             .contact-details p {
                 font-size: 1rem;
             }
+
+            .post-image {
+            max-width: 80%;
+            height: auto;
+            margin: 10px 0;
+            margin-top: 0px;
+            border-radius: 8px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -599,10 +527,7 @@
                 padding: 10px;
             }
 
-            .hero, 
-            .about,
-            .team,
-            .project,
+            .post-container,
             .partners-section,
             .contacts {
                 width: 100%;
@@ -621,9 +546,6 @@
         }
 
         @media (max-width: 480px) {
-            html {
-                scroll-padding-top: 60px;
-            }
             .toggle-container {
                 gap: 5px;
             }
@@ -653,6 +575,15 @@
                 width: 20px;
                 height: 20px;
             }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-buttons button {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -663,11 +594,11 @@
             <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
         </div>
         <nav>
-            <a href="#" data-en="Home" data-pt="Início">Home</a>
-            <a href="#about" data-en="About" data-pt="Sobre">About</a>
-            <a href="#team" data-en="Our Team" data-pt="Equipa">Our Team</a>
-            <a href="#project" data-en="Our Project" data-pt="Projeto">Our Project</a>
-            <a href="#schedule" data-en="Our Schedule" data-pt="Planeamento">Our Schedule</a>
+            <a href="index.html" data-en="Home" data-pt="Início">Home</a>
+            <a href="index.html#about" data-en="About" data-pt="Sobre">About</a>
+            <a href="index.html#team" data-en="Our Team" data-pt="Equipa">Our Team</a>
+            <a href="index.html#project" data-en="Our Project" data-pt="Projeto">Our Project</a>
+            <a href="index.html#schedule" data-en="Our Schedule" data-pt="Planeamento">Our Schedule</a>
             <a href="blog.html" data-en="Blog" data-pt="Blog">Blog</a>
             <a href="#contacts" data-en="Contacts" data-pt="Contactos">Contact</a>
         </nav>
@@ -698,115 +629,29 @@
             </svg>
         </div>        
     </header>
-
-    <section class="hero">
-        <h1>Sentinel Anti-Drone</h1>
-        <p data-en="Detection for Communication Jamming System for Security Forces" data-pt="Detecção de Sistema de Bloqueio de Comunicação para Forças de Segurança"></p>
-    </section>
-
-    <section id="about" class="about">
-        <h2 data-en="About" data-pt="Sobre">About</h2>
-        <p
-            data-en="With the increasing use of drones for illicit purposes, such as breaching restricted areas or unauthorized surveillance activities, the need for effective solutions to identify and alert about the presence of these aircraft has become essential. Our project focuses on developing a system for detecting unauthorized drones, aiming to enhance the security of sensitive infrastructures."
-            data-pt="Com o crescente uso de drones para fins ilícitos, como invasão de espaços restritos ou atividades de vigilância não autorizadas, torna-se essencial a criação de soluções eficazes para identificar e alertar sobre a presença destas aeronaves. O nosso projeto consiste no desenvolvimento de um sistema de deteção de drones não autorizados, com o objetivo de reforçar a segurança de infraestruturas sensíveis."> 
-        </p>
-        <p
-            data-en="To achieve this, we are developing a system based on computer vision and machine learning, using cameras to monitor the airspace and identify drones in real-time. In addition to detection, the system will feature a web interface where users can track the status of the system and receive notifications about potential threats." 
-            data-pt="Para isso, estamos a desenvolver um sistema baseado em visão computacional e machine learning, utilizando câmeras para monitorizar o espaço aéreo e identificar drones em tempo real. Além da deteção, o sistema contará com uma interface web onde os utilizadores poderão acompanhar o estado do sistema e receber notificações sobre possíveis ameaças."> 
-        </p>
-        <button class="btn-pdf" onclick="openPDF()"data-en="Project Proposal" data-pt="Proposta de Projeto"></button>
-    </section>
-
-    <section id="team" class="team">
-        <h2 data-en="Our Team" data-pt="Equipa">Our Team</h2>
-        <div class="team-container">
-            <div class="team-member">
-                <img src="images/team1.png" alt="Rodrigo Sanguino">
-                <div class="overlay" data-en="Works on research, prototype testing, and code development for embedded systems." data-pt="Trabalha na investigação, teste de protótipos e desenvolvimento de código para sistemas embebidos."></div>
-                <p>Rodrigo Sanguino</p>
-                <p data-en="Embedded Systems Engineer" data-pt="Engenheiro de Sistemas Embebidos"></p>
-                <p>ist184342</p>
-                <div class="social-icons">
-                    <a href="mailto:sanguino.rodrigo@gmail.com"><i class="fas fa-envelope"></i></a>
-                    <a href="https://www.linkedin.com/feed/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                </div>                
-            </div>
-            <div class="team-member">
-                <img src="images/team2.png" alt="Guilherme Martins">
-                <div class="overlay" data-en="Oversees project coordination, team management, and partner engagement to ensure successful execution." data-pt="Supervisiona a coordenação do projeto, a gestão da equipa e o envolvimento com parceiros para garantir uma execução bem-sucedida."></div>
-                <p>Guilherme Martins</p>
-                <p data-en="Project Manager" data-pt="Gestor de Projeto"></p>
-                <p>ist1106274</p>
-                <div class="social-icons">
-                    <a href="mailto:guilherme.candeias.martins@tecnico.ulisboa.pt"><i class="fas fa-envelope"></i></a>
-                    <a href="https://www.linkedin.com/in/guilherme-candeias-martins/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-            <div class="team-member">
-                <img src="images/team3.png" alt="Francisco Rodrigues">
-                <div class="overlay" data-en="Conducts initial research, integrates sensors, and manages technical aspects of the project." data-pt="Realiza a pesquisa inicial, integra sensores e gere os aspetos técnicos do projeto."></div>
-                <p>Francisco Rodrigues</p>
-                <p data-en="Technical Lead" data-pt="Líder Técnico"></p>
-                <p>ist1106695</p>
-                <div class="social-icons">
-                    <a href="mailto:francisco.b.rodrigues@tecnico.ulisboa.pt"><i class="fas fa-envelope"></i></a>
-                    <a href="https://www.linkedin.com/in/francisco-bernardo-rodrigues-141a77307/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-            <div class="team-member">
-                <img src="images/team4.png" alt="Guilherme Luís">
-                <div class="overlay" data-en="Conducts theoretical analysis, testing, and financial management to optimize project resources." data-pt="Realiza análise teórica, testes e gestão financeira para otimizar os recursos do projeto."></div>
-                <p>Guilherme Luís</p>
-                <p data-en="Systems Analyst" data-pt="Analista de Sistemas"></p>
-                <p>ist1106755</p>
-                <div class="social-icons">
-                    <a href="mailto:guilherme.costa.barata.luis@tecnico.ulisboa.pt"><i class="fas fa-envelope"></i></a>
-                    <a href="https://www.linkedin.com/feed/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-            <div class="team-member">
-                <img src="images/team5.png" alt="João Firmino">
-                <div class="overlay" data-en="Develops and maintains the website and web application to support project functionalities." data-pt="Desenvolve e mantém o website e a aplicação web para suportar as funcionalidades do projeto."></div>
-                <p>João Firmino</p>
-                <p data-en="Software Developer" data-pt="Desenvolvedor de Software"></p>
-                <p>ist1107485</p>
-                <div class="social-icons">
-                    <a href="mailto:joao.g.firmino@tecnico.ulisboa.pt"><i class="fas fa-envelope"></i></a>
-                    <a href="https://www.linkedin.com/in/joaogomesfirmino/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-            <div class="team-member">
-                <img src="images/team6.png" alt="Afonso de Mello">
-                <div class="overlay" data-en="Focuses on initial research, partnerships, and sensor integration for technological advancements." data-pt="Foca-se na pesquisa inicial, parcerias e integração de sensores para avanços tecnológicos."></div>
-                <p>Afonso de Mello</p>
-                <p data-en="R&D Engineer" data-pt="Engenheiro de R&D"></p>
-                <p>ist1107495</p>
-                <div class="social-icons">
-                    <a href="mailto:afonsodemello@tecnico.ulisboa.pt"><i class="fas fa-envelope"></i></a>
-                    <a href="https://www.linkedin.com/in/afonsodemello" target="_blank"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
     
-    <section id="project" class="project">
-        <h2 data-en="Our Project" data-pt="Projeto">Our Project</h2>
-        <p data-en="Check out our explanatory video about the Sentinel Anti-Drone project." data-pt="Veja o nosso vídeo explicativo sobre o projeto Sentinel Anti-Drone."></p>
-        <div class="video-container">
-            <iframe width="1280" height="720" 
-                src="https://www.youtube.com/embed/r8R_vuewTJc" 
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
+    <section class="post-container">
+        <h1 data-en="Finalizing Our Project Proposal: Focusing on Detection and AI-Driven Solutions" data-pt="Finalização da Nossa Proposta de Projeto: Foco na Deteção e em Soluções Baseadas em IA"></h1>
+        <div class="post-date">
+            <strong data-en="Date:" data-pt="Data:">Date:</strong> 
+            <span data-en="February 21, 2025" data-pt="21 de fevereiro de 2025"></span>
         </div>
-    </section>
-    
-    <section id="schedule" class="project">
-        <h2 data-en="Our Schedule" data-pt="Planeamento">Our Schedule</h2>
-        <p data-en="Check out our schedule." data-pt="Consulte o nosso planeamento."></p>
-        <img src="images/Schedule.png" alt="Schedule">
+        
+        <div class="post-content">
+            <p data-en="As we moved forward with our project, one of the most crucial stages was finalizing our Project Proposal and defining the exact direction we would take. After considering several different approaches and discussing our options with industry experts, we were able to narrow down our focus and make the key decision on how we would structure our system." data-pt="À medida que avançávamos com o nosso projeto, uma das fases mais cruciais foi a finalização da Proposta de Projeto e a definição da direção exata que tomaríamos. Depois de considerar várias abordagens e discutir as nossas opções com especialistas do setor, conseguimos afunilar o nosso foco e tomar decisões fundamentais sobre a estrutura do sistema."></p>
+            <p data-en="Initially, we had considered integrating RF receivers for drone detection. However, after careful consideration, we quickly realized that this approach would not be feasible. Given the complexity of RF analysis and our limited expertise in this area, we decided to shift our focus to a more viable solution." data-pt="Inicialmente, ponderámos a integração de recetores de RF para a deteção de drones. No entanto, após uma análise cuidadosa, rapidamente percebemos que esta abordagem não seria viável. Dada a complexidade da análise de RF e a nossa experiência limitada nesta área, decidimos redirecionar o nosso foco para uma solução mais prática."></p>
+            <p data-en="We then explored the idea of using a radar in combination with a camera and a machine learning algorithm. The radar would detect objects, and the camera would activate to analyze the video feed, triggering the machine learning model to identify potential drones. However, upon researching the costs and complexities of acquiring or building a high-quality radar system, we realized that this solution was not realistic for our current capabilities and budget." data-pt="Explorámos então a ideia de utilizar um radar em combinação com uma câmara e um algoritmo de aprendizagem automática. O radar detetaria objetos, ativando a câmara para analisar o vídeo e acionando o modelo de aprendizagem automática para identificar potenciais drones. No entanto, após investigarmos os custos e a complexidade da aquisição ou construção de um sistema de radar de alta qualidade, percebemos que esta solução não era realista face às nossas atuais capacidades e orçamento."></p>
+            <p data-en="Additionally, we decided to develop a web application as part of our system. The web app will allow users to track the status of the system (whether it is online or offline) and view detailed information on the drones detected, including the number of drones detected and their respective locations. This will add a layer of interactivity and transparency to the system, making it more accessible and useful for end users." data-pt="Adicionalmente, decidimos desenvolver uma aplicação web como parte do nosso sistema. Esta aplicação permitirá aos utilizadores monitorizar o estado do sistema (se está online ou offline) e visualizar informações detalhadas sobre os drones detetados, incluindo o número de drones e as respetivas localizações. Esta funcionalidade adicionará uma camada de interatividade e transparência ao sistema, tornando-o mais acessível e útil para os utilizadores finais."></p>
+            <p data-en="We are excited about these decisions and confident that they will set the foundation for a successful project. In the coming weeks, we’ll be diving deeper into the development of the camera-based detection system, as well as the machine learning algorithms that will power our drone detection capabilities.Stay tuned for more updates!" data-pt="Estamos entusiasmados com estas decisões e confiantes de que estabelecerão a base para um projeto bem-sucedido. Nas próximas semanas, iremos aprofundar o desenvolvimento do sistema de deteção baseado em câmaras, bem como dos algoritmos de aprendizagem automática que irão potenciar as nossas capacidades de deteção de drones. Fiquem atentos para mais novidades!"></p>
+        </div>
+        <img class="post-image" src="/public/images/post_2.png" alt="Post image">
+        <div class="nav-buttons">
+            <button class="prev" onclick="window.location.href='post_1.html'">
+                <span data-en="Previous Post" data-pt="Post Anterior">Previous Post</span>
+            </button>
+            <button class="next" onclick="window.location.href='post_3.html'">
+                <span data-en="Next Post" data-pt="Próximo Post">Next Post</span>
+        </div>
     </section>
 
     <section id="partners-section" class="partners-section">
@@ -814,23 +659,23 @@
         <div class="partners-container">
             <div class="partner-logo">
                 <a href="https://tecnico.ulisboa.pt" target="_blank">
-                    <img src="images/partner1.png" alt="Partner 1">
+                    <img src="/public/images/partner1.png" alt="Partner 1">
                 </a>
             </div>
             <div class="partner">
                 <a href="https://www.emfa.pt" target="_blank">
-                    <img class="partner-img light-mode" src="images/partner2l.png" alt="Partner 2">
-                    <img class="partner-img dark-mode" src="images/partner2d.png" alt="Partner 2 Dark Mode">
+                    <img class="partner-img light-mode" src="/public/images/partner2l.png" alt="Partner 2">
+                    <img class="partner-img dark-mode" src="/public/images/partner2d.png" alt="Partner 2 Dark Mode">
                 </a>
             </div>
             <div class="partner-logo">
                 <a href="https://www.thalesgroup.com" target="_blank">
-                    <img src="images/partner3.png" alt="Partner 3">
+                    <img src="/public/images/partner3.png" alt="Partner 3">
                 </a>
             </div>
             <div class="partner-logo">
                 <a href="https://mauser.pt" target="_blank">
-                    <img src="images/partner4.png" alt="Partner 4">
+                    <img src="/public/images/partner4.png" alt="Partner 4">
                 </a>
             </div>
         </div>
@@ -841,8 +686,7 @@
             <p>© 2025 - All Rights Reserved.</p>
             <div class="contact-details">
                 <h3 data-en="Contacts" data-pt="Contactos">Contacts</h3>
-                <p><strong data-en="Address:" data-pt="Morada:">Address:</strong> Av. Rovisco Pais Nº1, 1049-001 Lisboa</p>
-                <p><strong data-en="Email:" data-pt="Email:">Email:</strong><a href="mailto:email.projeto@algo.com">email.projeto@algo.com</a></p> 
+                <p><strong data-en="Email:" data-pt="Email:">Email:</strong><a href="mailto:email.projeto@algo.com">email.projeto@algo.com</a></p>
             </div>
             <div class="contact-form">
                 <h3 data-en="Write us" data-pt="Escreva-nos">Write us</h3>
@@ -932,10 +776,6 @@
                 document.querySelector("header nav").classList.remove("active");
             });
         });
-
-        function openPDF() {
-            window.open('Anti-Drone__Initial_Project_Proposal.pdf', '_blank');
-        }
     </script>
 </body>
 </html>

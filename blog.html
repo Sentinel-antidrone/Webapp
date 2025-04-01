@@ -193,7 +193,7 @@
             opacity: 0;
             transform: scale(0.8);
         }
-        
+
         .language-selector {
             display: flex;
             align-items: center;
@@ -232,115 +232,6 @@
 
         #toggleLanguage.portuguese {
             background-color: #28a745;
-        }
-
-        .post-container {
-            max-width: 1320px;
-            max-width: 90%;
-            margin: 40px auto 20px;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        body.dark-mode .post-container {
-            background: #1e1e1e;
-        }
-
-        .post-container h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        body.dark-mode .post-container h1 {
-            color: #ffffff;
-        }
-
-        .post-date {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        body.dark-mode .post-date {
-            color: #aaa;
-        }
-
-        .post-content {
-            margin: 20px 0;
-            margin-top: 0px;
-            margin-bottom: 5px;
-            line-height: 1.6;
-            font-size: 1.0rem;
-            text-align: left;
-        }
-
-        .post-content p {
-        margin-bottom: 15px;
-        margin-top: 0;
-        }
-
-        .post-content p:last-child {
-            margin-bottom: 10;
-        }
-
-        .post-content ul {
-            margin-top: 10px;
-            margin-bottom: 15px;
-        }
-        .post-content p + ul {
-            margin-top: 10;
-        }
-
-        .post-content ul + p {
-            margin-top: 15px;
-        }
-
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 40px;
-            gap: 20px;
-        }
-
-        .nav-buttons button {
-            padding: 12px 24px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            min-width: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .nav-buttons button:hover {
-            background-color: #0056b3;
-            transform: translateX(0);
-        }
-
-        .nav-buttons button.prev:hover {
-            transform: translateX(-5px);
-        }
-
-        .nav-buttons button.next:hover {
-            transform: translateX(5px);
-        }
-
-        .post-image {
-            max-width: 50%;
-            height: auto;
-            margin: 20px 0;
-            margin-top: 0px;
-            border-radius: 8px;
         }
 
         .partners-section {
@@ -443,6 +334,59 @@
             background-color: #0056b3;
         }
 
+        .blog-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .blog-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .post-content {
+            text-align: left;
+        }
+
+        .post {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .post {
+            background-color: #1e1e1e;
+            box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+        }
+
+        .post h2 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .post p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .post a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .post a:hover {
+            text-decoration: underline;
+        }
+
         .menu-icon {
             display: none;
             font-size: 1.8rem;
@@ -452,17 +396,6 @@
 
         .menu-icon:hover {
             color: #007BFF;
-        }
-
-        ul {
-            list-style-type: disc;
-            padding-left: 20px;
-            margin-top: 0;
-            padding-top: 0;
-        }
-
-        li {
-            margin-bottom: 0px;
         }
 
         /* Media Queries */
@@ -503,6 +436,14 @@
                 border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             }
         
+            .blog-container {
+                padding: 15px;
+            }
+
+            .post {
+                padding: 15px;
+            }
+
             .partners-container {
                 flex-direction: row;
             }
@@ -522,17 +463,25 @@
             .contact-details p {
                 font-size: 1rem;
             }
-
-            .post-image {
-            max-width: 80%;
-            height: auto;
-            margin: 10px 0;
-            margin-top: 0px;
-            border-radius: 8px;
-            }
         }
 
         @media (max-width: 480px) {
+            .blog-container h1 {
+                font-size: 2rem;
+            }
+
+            .post h2 {
+                font-size: 1.5rem;
+            }
+
+            .post p {
+                font-size: 1rem;
+            }
+
+            .post a {
+                font-size: 1rem;
+            }
+
             .partner-logo img {
                 width: 120px;
                 height: 120px;
@@ -550,7 +499,7 @@
                 padding: 10px;
             }
 
-            .post-container,
+            .blog-container,
             .partners-section,
             .contacts {
                 width: 100%;
@@ -598,15 +547,6 @@
                 width: 20px;
                 height: 20px;
             }
-
-            .nav-buttons {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .nav-buttons button {
-                max-width: 100%;
-            }
         }
     </style>
 </head>
@@ -617,13 +557,14 @@
             <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
         </div>
         <nav>
-            <a href="index.html" data-en="Home" data-pt="Início">Home</a>
+            <a href="/" data-en="Home" data-pt="Início">Home</a>
             <a href="index.html#about" data-en="About" data-pt="Sobre">About</a>
             <a href="index.html#team" data-en="Our Team" data-pt="Equipa">Our Team</a>
             <a href="index.html#project" data-en="Our Project" data-pt="Projeto">Our Project</a>
             <a href="index.html#schedule" data-en="Our Schedule" data-pt="Planeamento">Our Schedule</a>
             <a href="blog.html" data-en="Blog" data-pt="Blog">Blog</a>
-            <a href="#contacts" data-en="Contacts" data-pt="Contactos">Contact</a>
+            <a href="index.html#contacts" data-en="Contacts" data-pt="Contactos">Contact</a>
+            <a href="LiveData.html" data-en="Live Data" data-pt="Dados em Tempo Real">Live Data</a>
         </nav>
         <div class="toggle-container">
             <button id="toggleLanguage" class="english">
@@ -650,34 +591,13 @@
             <svg id="moon-icon" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
-        </div>        
+        </div>         
     </header>
-    
-    <section class="post-container">
-        <h1 data-en="Progress Update: Training the Model and Finalizing Components" data-pt="Atualização de Progresso: Treino do Modelo e Finalização dos Componentes">Test Post</h1>
-        <div class="post-date">
-            <strong data-en="Date:" data-pt="Data:">Date:</strong> 
-            <span data-en="March 1, 2025" data-pt="1 de março de 2025"></span>
-        </div>
-        <div class="post-content">
-            <p data-en="This week, we began training the machine learning algorithm that will power our drone detection system: YOLO v11. So far, we have trained the model with approximately 10,000 images, but there is still a long way to go in terms of refining and improving its accuracy. The process of fine-tuning the model will continue as we aim to optimize its performance for real-world detection scenarios." data-pt="Esta semana, começámos o treino do algoritmo de aprendizagem automática que irá alimentar o nosso sistema de deteção de drones: o YOLO v11. Até agora, treinámos o modelo com aproximadamente 10.000 imagens, mas ainda há um longo caminho a percorrer em termos de aperfeiçoamento e melhoria da sua precisão. O processo de afinação do modelo continuará, à medida que procuramos otimizar o seu desempenho para cenários reais de deteção."></p>
-            <p data-en="Additionally, we have finalized the components that will be used to assemble our prototype. The selected hardware includes:" data-pt="Adicionalmente, finalizámos os componentes que serão utilizados para montar o nosso protótipo. O hardware selecionado inclui:"></p>
-            <ul>
-                <li><strong data-en="Microcomputer: Raspberry Pi 5 8GB - Raspberry Pi SC1112 " data-pt="Microcomputador: Raspberry Pi 5 8GB - Raspberry Pi SC1112 "></strong><a href="https://mauser.pt/catalog/product_info.php?products_id=095-5008" target="_blank">(Link)</a></li>
-                <li><strong data-en="Camera Module: Official Raspberry Pi Camera Module 3 (12MP, 76°) - SC0872 " data-pt="Módulo de Câmara: Módulo de Câmara Oficial Raspberry Pi 3 (12MP, 76°) - SC0872 "></strong><a href="https://mauser.pt/catalog/product_info.php?products_id=095-1253" target="_blank">(Link)</a></li>
-                <li><strong data-en="AI Accelerator: Raspberry Pi AI HAT+ with Hailo (26 TOPS) " data-pt="Acelerador de IA: Raspberry Pi AI HAT+ com Hailo (26 TOPS) "></strong><a href="https://mauser.pt/catalog/product_info.php?products_id=095-4440" target="_blank">(Link)</a></li>
-            </ul>
-            <p data-en="We are still uncertain whether we will be able to obtain this AI accelerator model or if we will have to opt for the downgraded version with 13 TOPS. Regardless, the project is progressing well, and we expect to place the necessary component orders by next week." data-pt="Ainda não temos certeza se conseguiremos obter este modelo de acelerador de IA ou se teremos que optar pela versão inferior com 13 TOPS. De qualquer forma, o projeto está a progredir bem e esperamos fazer os pedidos dos componentes necessários até à próxima semana."></p>
-            <p data-en="Stay tuned for more updates as we move closer to bringing our system to life!" data-pt="Fiquem atentos para mais atualizações à medida que nos aproximamos de dar vida ao nosso sistema!"></p>
-        </div>
-        <img class="post-image" src="images/post_3.jpg" alt="Post image">
-        <div class="nav-buttons">
-            <button class="prev" onclick="window.location.href='post_2.html'">
-                <span data-en="Previous Post" data-pt="Post Anterior">Previous Post</span>
-            </button>
-            <button class="next" onclick="window.location.href='post_4.html'">
-                <span data-en="Next Post" data-pt="Próximo Post">Next Post</span>
-            </button>
+
+    <section id="blog" class="blog">
+        <div class="blog-container">
+            <h1 data-en="Blog" data-pt="Blog">Blog</h1>
+            <div id="posts-container"></div>
         </div>
     </section>
 
@@ -686,27 +606,27 @@
         <div class="partners-container">
             <div class="partner-logo">
                 <a href="https://tecnico.ulisboa.pt" target="_blank">
-                    <img src="images/partner1.png" alt="Partner 1">
+                    <img src="/public/images/partner1.png" alt="Partner 1">
                 </a>
             </div>
             <div class="partner">
                 <a href="https://www.emfa.pt" target="_blank">
-                    <img class="partner-img light-mode" src="images/partner2l.png" alt="Partner 2">
-                    <img class="partner-img dark-mode" src="images/partner2d.png" alt="Partner 2 Dark Mode">
+                    <img class="partner-img light-mode" src="/public/images/partner2l.png" alt="Partner 2">
+                    <img class="partner-img dark-mode" src="/public/images/partner2d.png" alt="Partner 2 Dark Mode">
                 </a>
             </div>
             <div class="partner-logo">
                 <a href="https://www.thalesgroup.com" target="_blank">
-                    <img src="images/partner3.png" alt="Partner 3">
+                    <img src="/public/images/partner3.png" alt="Partner 3">
                 </a>
             </div>
             <div class="partner-logo">
                 <a href="https://mauser.pt" target="_blank">
-                    <img src="images/partner4.png" alt="Partner 4">
+                    <img src="/public/images/partner4.png" alt="Partner 4">
                 </a>
             </div>
         </div>
-    </section>
+    </section>    
 
     <section id="contacts" class="contacts">
         <div class="footer">
@@ -714,7 +634,7 @@
             <div class="contact-details">
                 <h3 data-en="Contacts" data-pt="Contactos">Contacts</h3>
                 <p><strong data-en="Address:" data-pt="Morada:">Address:</strong> Av. Rovisco Pais Nº1, 1049-001 Lisboa</p>
-                <p><strong data-en="Email:" data-pt="Email:">Email:</strong><a href="mailto:email.projeto@algo.com">email.projeto@algo.com</a></p> 
+                <p><strong data-en="Email:" data-pt="Email:">Email:</strong><a href="mailto:email.projeto@algo.com">email.projeto@algo.com</a></p>
             </div>
             <div class="contact-form">
                 <h3 data-en="Write us" data-pt="Escreva-nos">Write us</h3>
@@ -722,11 +642,11 @@
                     <input type="text" name="name" placeholder="Your Name.." required>
                     <input type="email" name="email" placeholder="Your Email.." required>
                     <textarea name="message" placeholder="Your message.." required></textarea>
-                    <button type="submit"data-en="Send" data-pt="Enviar"></button>
+                    <button type="submit" data-en="Send" data-pt="Enviar"></button>
                 </form>
             </div>
         </div>
-    </section>    
+    </section>        
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
@@ -734,7 +654,7 @@
             document.body.classList.add('dark-mode');
             document.getElementById('darkModeToggle').checked = true;
         }
-
+        
         document.getElementById("darkModeToggle").addEventListener("change", function () {
             const scrollPosition = window.scrollY;
     
@@ -751,33 +671,61 @@
 
         document.addEventListener("DOMContentLoaded", function () {
             const languageButton = document.getElementById("toggleLanguage");
-            let currentLanguage = localStorage.getItem("language") || "pt"; // Define o idioma salvo ou padrão (pt)
+            let currentLanguage = localStorage.getItem("language") || "pt"; // Padrão para PT
 
             function updateLanguage(lang) {
-                // Atualiza os textos da navegação
                 document.querySelectorAll("[data-en]").forEach(element => {
-                    element.textContent = element.getAttribute(`data-${lang}`);
+                element.textContent = element.getAttribute(`data-${lang}`);
+            });
+
+            if (lang === "pt") {
+                languageButton.innerHTML = `<span>🇵🇹</span> PT`;
+                languageButton.classList.remove("english");
+                languageButton.classList.add("portuguese");
+            } else {
+                languageButton.innerHTML = `<span>🇺🇸</span> EN`;
+                languageButton.classList.remove("portuguese");
+                languageButton.classList.add("english");
+            }
+
+            localStorage.setItem("language", lang);
+            loadPosts(lang); // Carregar os posts conforme a linguagem
+            }
+
+            function loadPosts(lang) {
+                const file = lang === "pt" ? "public/posts/posts-pt.json" : "public/posts/posts-en.json";
+
+                fetch(file)
+                .then(response => response.json())
+                .then(posts => {
+                    const container = document.getElementById("posts-container");
+                    container.innerHTML = "";
+
+                    posts.forEach(post => {
+                        const postElement = document.createElement("div");
+                        postElement.classList.add("post");
+
+                        postElement.innerHTML = `
+                            <h2>${post.title}</h2>
+                            <p>${post.date}</p>
+                            <img src="${post.image}" style="max-width: 80%; height: auto; max-height: 250px; border-radius: 8px;">
+                            <p class="post-content">${post.content}</p>
+                            <a href="${post.link}">${lang === "pt" ? "Leia mais" : "Read more"}</a>
+                        `;
+
+                        container.appendChild(postElement);
+                    });
+                })
+                .catch(error => {
+                    console.error("Erro ao carregar os posts:", error);
+                    document.getElementById("posts-container").innerHTML = `
+                        <p>${lang === "pt" ? "Não foi possível carregar os posts." : "Could not load posts."}</p>
+                    `;
                 });
+            }
 
-                // Atualiza o botão de idioma
-                if (lang === "pt") {
-                    languageButton.innerHTML = `<span>🇵🇹</span> PT`;
-                    languageButton.classList.remove("english");
-                    languageButton.classList.add("portuguese");
-                } else {
-                    languageButton.innerHTML = `<span>🇺🇸</span> EN`;
-                    languageButton.classList.remove("portuguese");
-                    languageButton.classList.add("english");
-                }
-
-                // Salva no localStorage
-                localStorage.setItem("language", lang);
-            }   
-
-            // Aplica o idioma salvo ao carregar a página
             updateLanguage(currentLanguage);
 
-            // Alterna entre os idiomas ao clicar no botão
             languageButton.addEventListener("click", function () {
                 currentLanguage = currentLanguage === "pt" ? "en" : "pt";
                 updateLanguage(currentLanguage);
