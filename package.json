@@ -4,7 +4,7 @@
     "description": "Sentinel Anti-Drone Detection System Website",
     "scripts": {
       "dev": "npx serve",
-      "build": "echo 'No build step needed'"
+      "build": "cp -r public ."
     },
     "engines": {
       "node": ">=14.0.0"
@@ -12,4 +12,4 @@
     "devDependencies": {
       "serve": "^14.0.0"
     }
-  }
+}
