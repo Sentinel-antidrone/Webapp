@@ -1,5 +1,19 @@
 [
     {
+        "title": "Final Components Acquired – Assembly Phase Begins",
+        "date": "May 4, 2025",
+        "content": "We have successfully acquired all the components required for our final prototype. The next step is to assemble and test everything to verify that our system performs as expected...",
+        "image": "/public/images/post_9.jpg",
+        "link": "post_9.html"
+    },
+    {
+        "title": "Rotor Control Testing and Hardware Adjustments",
+        "date": "April 27, 2025",
+        "content": "This week, we developed the first version of the code responsible for rotating the rotors based on the image data. Initial tests were promising — the rotors are responding correctly and rotating as expected. The next step is to integrate the camera and test the system with real-world footage to ensure everything works in practice...",
+        "image": "/public/images/post_7.jpg",
+        "link": "post_8.html"
+    },
+    {
         "title": "Progress and Upcoming Steps",
         "date": "March 29, 2025",
         "content": "This week, progress on our project has been a bit slower due to the deadlines for major assignments from other courses. However, we received good news — we can now pick up the remaining components, specifically the Raspberry Pi 5 and the 64GB memory card...",

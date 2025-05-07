@@ -1,5 +1,19 @@
 [
     {
+        "title": "Componentes Finais Adquiridos – Início da Fase de Montagem",
+        "date": "4 de maio de 2025",
+        "content": "Conseguimos adquirir com sucesso todos os componentes necessários para o nosso protótipo final. O próximo passo é montar e testar tudo, para verificar se o sistema funciona como esperado...",
+        "image": "/public/images/post_9.jpg",
+        "link": "post_9.html"
+    },
+    {
+        "title": "Testes de Controlo dos Rotores e Ajustes de Hardware",
+        "date": "27 de abril de 2025",
+        "content": "Esta semana, desenvolvemos a primeira versão do código responsável pela rotação dos rotores com base nos dados da imagem. Os testes iniciais foram promissores — os rotores estão a responder corretamente e a rodar como esperado. O próximo passo é integrar a câmara e testar o sistema com imagens reais, para garantir que tudo funciona na prática...",
+        "image": "/public/images/post_8.jpg",
+        "link": "post_8.html"
+    },
+    {
         "title": "Progresso no Nosso Sistema de Deteção Anti-Drones",
         "date": "29 de março de 2025",
         "content": "Esta semana, o progresso do nosso projeto foi um pouco mais lento devido aos prazos de entrega de trabalhos importantes de outras disciplinas. No entanto, recebemos boas notícias — já podemos levantar os componentes em falta, especificamente o Raspberry Pi 5 e o cartão de memória de 64GB...",
