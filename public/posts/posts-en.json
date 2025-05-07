@@ -10,7 +10,7 @@
         "title": "Rotor Control Testing and Hardware Adjustments",
         "date": "April 27, 2025",
         "content": "This week, we developed the first version of the code responsible for rotating the rotors based on the image data. Initial tests were promising — the rotors are responding correctly and rotating as expected. The next step is to integrate the camera and test the system with real-world footage to ensure everything works in practice...",
-        "image": "/public/images/post_7.jpg",
+        "image": "/public/images/post_8.jpg",
         "link": "post_8.html"
     },
     {
