@@ -8,9 +8,9 @@
     "routes": [
       { "handle": "filesystem" },
       { "src": "/blog", "dest": "/blog.html" },
-      { "src": "/post_([1-9])(.*)", "dest": "/public/posts/post_$1.html" },
-      { "src": "public/posts/post_([1-9])(.*)", "dest": "/public/posts/post_$1.html" },
-      { "src": "public/posts/post_([1-9]).html", "dest": "public/posts/post_$1.html" },
+      { "src": "/post_([1-11])(.*)", "dest": "/public/posts/post_$1.html" },
+      { "src": "public/posts/post_([1-11])(.*)", "dest": "/public/posts/post_$1.html" },
+      { "src": "public/posts/post_([1-11]).html", "dest": "public/posts/post_$1.html" },
       { "src": "/images/(.*)", "dest": "/images/$1" },
       { "src": "/LiveData", "dest": "/LiveData.html" },
       { "src": "/(.*\\.(js|css|jpg|jpeg|png|gif|ico|svg))", "dest": "/$1" },
