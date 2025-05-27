@@ -5,25 +5,42 @@ import time
 import json
 import os
 
-service_account_key_path = 'API_KEY/sentinel-d1c9e-firebase-adminsdk-fbsvc-09dc30c339.json'
-
 # Define the folder where you want to save the detection files
 output_folder = 'detection_data'
 
 # --- Setup Firebase Admin SDK ---
 try:
-    cred = credentials.Certificate(service_account_key_path)
+    # Check if running in production with environment variables
+    if 'FIREBASE_PROJECT_ID' in os.environ:
+        # Use environment variables instead of service account file
+        firebase_credentials = {
+            "type": "service_account",
+            "project_id": os.environ.get('FIREBASE_PROJECT_ID'),
+            "private_key_id": os.environ.get('FIREBASE_PRIVATE_KEY_ID'),
+            "private_key": os.environ.get('FIREBASE_PRIVATE_KEY', '').replace('\\n', '\n'),
+            "client_email": os.environ.get('FIREBASE_CLIENT_EMAIL'),
+            "client_id": os.environ.get('FIREBASE_CLIENT_ID'),
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+            "token_uri": "https://oauth2.googleapis.com/token",
+            "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+            "client_x509_cert_url": os.environ.get('FIREBASE_CLIENT_CERT_URL')
+        }
+        cred = credentials.Certificate(firebase_credentials)
+    else:
+        # For local development, use the service account file
+        service_account_key_path = 'API_KEY/sentinel-d1c9e-firebase-adminsdk-fbsvc-09dc30c339.json'
+        cred = credentials.Certificate(service_account_key_path)
+    
     firebase_admin.initialize_app(cred, {
         'databaseURL': 'https://sentinel-d1c9e-default-rtdb.europe-west1.firebasedatabase.app'
     })
     print("Firebase Admin SDK initialized successfully.")
 except FileNotFoundError:
-    print(f"Error: Service account key file not found at {service_account_key_path}")
-    print("Please make sure the path is correct and the file exists.")
-    exit() # Exit if credentials file isn't found
+    print(f"Error: Service account key file not found. Please check your configuration.")
+    exit()
 except Exception as e:
     print(f"Error initializing Firebase Admin SDK: {e}")
-    exit() # Exit on other initialization errors
+    exit()
 
 # Get a database reference to the 'detections' node
 detections_ref = db.reference('detections')
