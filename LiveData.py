@@ -27,10 +27,7 @@ try:
         }
         cred = credentials.Certificate(firebase_credentials)
     else:
-        # For local development, use the service account file
-        service_account_key_path = 'API_KEY/sentinel-d1c9e-firebase-adminsdk-fbsvc-09dc30c339.json'
-        cred = credentials.Certificate(service_account_key_path)
-        print(f"Using service account file: {service_account_key_path}")
+        print(f"No no no! You need to set the environment variables for Firebase credentials.")
     
     # Get database URL from environment variable or use hardcoded value as fallback
     database_url = os.environ.get('FIREBASE_DATABASE_URL', 
