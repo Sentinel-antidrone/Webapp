@@ -20,9 +20,9 @@ try:
             "private_key": os.environ.get('FIREBASE_PRIVATE_KEY', '').replace('\\n', '\n'),
             "client_email": os.environ.get('FIREBASE_CLIENT_EMAIL'),
             "client_id": os.environ.get('FIREBASE_CLIENT_ID'),
-            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-            "token_uri": "https://oauth2.googleapis.com/token",
-            "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+            "auth_uri": os.environ.get('FIREBASE_AUTH_URI'),
+            "token_uri": os.environ.get('FIREBASE_TOKEN_URI'),
+            "auth_provider_x509_cert_url": os.environ.get('FIREBASE_AUTH_PROVIDER_CERT_URL'),
             "client_x509_cert_url": os.environ.get('FIREBASE_CLIENT_CERT_URL')
         }
         cred = credentials.Certificate(firebase_credentials)
@@ -30,9 +30,14 @@ try:
         # For local development, use the service account file
         service_account_key_path = 'API_KEY/sentinel-d1c9e-firebase-adminsdk-fbsvc-09dc30c339.json'
         cred = credentials.Certificate(service_account_key_path)
+        print(f"Using service account file: {service_account_key_path}")
+    
+    # Get database URL from environment variable or use hardcoded value as fallback
+    database_url = os.environ.get('FIREBASE_DATABASE_URL', 
+                                 'https://sentinel-d1c9e-default-rtdb.europe-west1.firebasedatabase.app')
     
     firebase_admin.initialize_app(cred, {
-        'databaseURL': 'https://sentinel-d1c9e-default-rtdb.europe-west1.firebasedatabase.app'
+        'databaseURL': database_url
     })
     print("Firebase Admin SDK initialized successfully.")
 except FileNotFoundError:
