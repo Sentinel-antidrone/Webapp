@@ -1,135 +1,99 @@
-import requests
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
 import time
-import random
 import json
-import logging
-from datetime import datetime
+import os
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler("sensor_data.log"),
-        logging.StreamHandler()
-    ]
-)
+service_account_key_path = 'API_KEY/sentinel-d1c9e-firebase-adminsdk-fbsvc-09dc30c339.json'
 
-# API configuration
-API_URL = "https://sentinel-drone-api.onrender.com/api/data"
-API_KEY = "sentinel-drone-key"  # In a real application, this would be a secure key
+# Define the folder where you want to save the detection files
+output_folder = 'detection_data'
 
-# Drone detection simulation parameters
-DETECTION_PROBABILITY = 0.2  # 20% chance of detecting a drone in each cycle
-BASE_COORDINATES = (38.736946, -9.142685)  # Lisbon coordinates as base
-COORDINATE_VARIATION = 0.01  # Small random variation for simulated locations
+# --- Setup Firebase Admin SDK ---
+try:
+    cred = credentials.Certificate(service_account_key_path)
+    firebase_admin.initialize_app(cred, {
+        'databaseURL': 'https://sentinel-d1c9e-default-rtdb.europe-west1.firebasedatabase.app'
+    })
+    print("Firebase Admin SDK initialized successfully.")
+except FileNotFoundError:
+    print(f"Error: Service account key file not found at {service_account_key_path}")
+    print("Please make sure the path is correct and the file exists.")
+    exit() # Exit if credentials file isn't found
+except Exception as e:
+    print(f"Error initializing Firebase Admin SDK: {e}")
+    exit() # Exit on other initialization errors
 
-def generate_sensor_data():
-    """Generate simulated sensor data."""
-    # Simulate drone detection based on probability
-    drone_detected = random.random() < DETECTION_PROBABILITY
-    
-    # Get current timestamp
-    timestamp = datetime.now().isoformat()
-    
-    # Base sensor data
-    sensor_data = {
-        "timestamp": timestamp,
-        "system_status": "alert" if drone_detected else "operational",
-        "rf_detection": {
-            "signal_strength": random.randint(10, 90),
-            "frequency_mhz": random.uniform(2400, 5800)
-        },
-        "visual_detection": {
-            "confidence": random.randint(0, 100),
-            "detected_objects": random.randint(0, 3)
-        },
-        "acoustic_detection": {
-            "decibel_level": random.randint(20, 80),
-            "signature_match": random.random() > 0.5
-        }
-    }
-    
-    # Add detection-specific data if a drone is detected
-    if drone_detected:
-        # Generate random coordinates near the base
-        lat = BASE_COORDINATES[0] + random.uniform(-COORDINATE_VARIATION, COORDINATE_VARIATION)
-        lon = BASE_COORDINATES[1] + random.uniform(-COORDINATE_VARIATION, COORDINATE_VARIATION)
-        
-        sensor_data["drone_detection"] = {
-            "detected": True,
-            "coordinates": [lat, lon],
-            "altitude_meters": random.randint(50, 200),
-            "speed_kmh": random.randint(0, 60),
-            "drone_type": random.choice(["quadcopter", "hexacopter", "fixed-wing"])
-        }
+# Get a database reference to the 'detections' node
+detections_ref = db.reference('detections')
+
+# --- Ensure the output folder exists ---
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder)
+    print(f"Created output folder: {output_folder}")
+else:
+    print(f"Output folder already exists: {output_folder}")
+
+
+print(f"\nListening for new detections on: {detections_ref.url}")
+
+# Define a callback function that will be triggered when a new child is added
+def new_detection_listener(event):
+    """
+    Callback function triggered when a new child is added under /detections.
+    The 'event' object contains information about the added child.
+    """
+    print("-" * 20) # Separator for clarity
+    print(f"Event Type: {event.event_type}")
+    print(f"Relative Path: {event.path}")
+    print(f"Data received for new child:")
+    # print(json.dumps(event.data, indent=2)) # Optional: print the data nicely
+
+    # Get the unique key (ID) of the new detection
+    # event.path starts with '/', so we remove it to get the key
+    detection_id = event.path.lstrip('/')
+
+    # Get the actual data of the new detection
+    detection_data = event.data
+
+    if detection_id and detection_data is not None:
+        # Define the filename using the detection ID
+        filename = f"{detection_id}.json"
+        filepath = os.path.join(output_folder, filename)
+
+        try:
+            # Save the detection data to a JSON file
+            with open(filepath, 'w') as f:
+                json.dump(detection_data, f, indent=2) # Use indent for readability
+
+            print(f"Saved new detection '{detection_id}' to {filepath}")
+        except Exception as e:
+            print(f"Error saving detection '{detection_id}' to file: {e}")
     else:
-        sensor_data["drone_detection"] = {
-            "detected": False
-        }
-    
-    return sensor_data
+        print("Received empty or invalid data for a new child.")
 
-def send_data_to_api(data):
-    """Send data to API endpoint."""
-    headers = {
-        "Authorization": f"Bearer {API_KEY}",
-        "Content-Type": "application/json"
-    }
-    
-    try:
-        response = requests.post(API_URL, json=data, headers=headers)
-        if response.status_code == 200:
-            logging.info(f"Data sent successfully: Status {response.status_code}")
-            return True
-        else:
-            logging.error(f"Failed to send data: Status {response.status_code}, Response: {response.text}")
-            return False
-    except Exception as e:
-        logging.error(f"Error sending data: {str(e)}")
-        return False
+    print("-" * 20)
 
-def main():
-    """Main function to run the data collection and sending loop."""
-    logging.info("Starting Sentinel Anti-Drone data collection system")
-    
-    try:
-        while True:
-            # Generate sensor data
-            sensor_data = generate_sensor_data()
-            
-            # Log the data being sent (in production, you might want to reduce this)
-            logging.info(f"Sending data: {json.dumps(sensor_data, indent=2)}")
-            
-            # Send data to API
-            send_data_to_api(sensor_data)
-            
-            # Wait before sending next data point
-            time.sleep(10)  # Send every 10 seconds
-    except KeyboardInterrupt:
-        logging.info("Data collection stopped by user")
-    except Exception as e:
-        logging.error(f"Unexpected error: {str(e)}")
-        raise
 
-if __name__ == "__main__":
-    main()
+# Attach the listener to the 'detections' reference for 'child_added' events
+# This means the 'new_detection_listener' function will be called:
+# 1. Once for each existing child under /detections when the script starts.
+# 2. Once every time a new child is added to /detections after the script starts.
+detections_ref.listen(new_detection_listener, 'child_added')
 
-# found this online:
-# import requests
-# import time
-#
-# API_URL = "https://your-webapp.com/api/data"
-# API_KEY = "your_api_key_here"
-#
-# while True:
-#     sensor_data = {"temperature": 25.5, "humidity": 60}  # Replace with real sensor data
-#     headers = {"Authorization": f"Bearer {API_KEY}"}
-#     
-#     try:
-#         response = requests.post(API_URL, json=sensor_data, headers=headers)
-#         print("Data sent:", response.status_code)
-#     except Exception as e:
-#         print("Error:", e)
-#     
-#     time.sleep(10)  # Send every 10 seconds
+print("Listener started. Waiting for new detections...")
+print(f"New detection data will be saved in the '{output_folder}' folder.")
+print("Press Ctrl+C to stop.")
+
+# Keep the script running indefinitely to listen for events
+try:
+    while True:
+        time.sleep(1) # Sleep to prevent high CPU usage while waiting
+except KeyboardInterrupt:
+    print("\nListener stopping...")
+    # In a more complex application, you might need to explicitly detach listeners
+    # but for this simple script, Ctrl+C stopping the process is usually sufficient.
+
+print("Listener stopped.")
+

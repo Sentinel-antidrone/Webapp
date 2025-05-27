@@ -367,6 +367,14 @@
             background-color: #0056b3;
         }
 
+        .refresh-button.active {
+            background-color: #28a745;
+        }
+
+        .refresh-button.active:hover {
+            background-color: #218838;
+        }
+
         .chart-container {
             width: 100%;
             height: 300px;
@@ -514,6 +522,57 @@
             display: block;
         }
 
+        /* Add styles for detection list */
+        .detection-list {
+            max-width: 800px;
+            margin: 20px auto;
+            width: 100%;
+        }
+
+        .detection-item {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .detection-item:hover {
+            transform: translateY(-2px);
+        }
+
+        body.dark-mode .detection-item {
+            background-color: #2d2d2d;
+        }
+
+        .detection-event {
+            font-weight: bold;
+            color: #dc3545;
+        }
+
+        .detection-time {
+            color: #666;
+        }
+
+        body.dark-mode .detection-time {
+            color: #aaa;
+        }
+
+        .no-detections {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-style: italic;
+        }
+
+        body.dark-mode .no-detections {
+            color: #aaa;
+        }
+
         @media (max-width: 768px) {
             .menu-icon {
                 display: block;
@@ -641,84 +700,28 @@
     <section class="live-data-container">
         <div class="live-data-header">
             <h1 data-en="Live Detection Data" data-pt="Dados de Detecção em Tempo Real">Live Detection Data</h1>
-            <p data-en="Real-time sensor measurements from our anti-drone detection system" data-pt="Medições em tempo real dos sensores do nosso sistema de detecção anti-drone">Real-time sensor measurements from our anti-drone detection system</p>
+            <p data-en="Detection events from our anti-drone system" data-pt="Eventos de detecção do nosso sistema anti-drone">Detection events from our anti-drone system</p>
         </div>
 
         <div class="alert-box" id="detection-alert">
             <strong data-en="Alert!" data-pt="Alerta!">Alert!</strong> 
-            <span data-en="Unauthorized drone detected in monitored area!" data-pt="Drone não autorizado detectado na área monitorizada!">Unauthorized drone detected in monitored area!</span>
+            <span data-en="Recent drone detection in monitored area!" data-pt="Detecção recente de drone na área monitorizada!">Recent drone detection in monitored area!</span>
         </div>
 
-        <div class="data-grid">
-            <div class="data-card">
-                <h3>
-                    <i class="fas fa-check-circle"></i>
-                    <span data-en="System Status" data-pt="Estado do Sistema">System Status</span>
-                </h3>
-                <div class="status-indicator">
-                    <div class="status-dot active" id="system-status-dot"></div>
-                    <span class="status-text" id="system-status-text" data-en="Operational" data-pt="Operacional">Operational</span>
-                </div>
-                <div class="data-detail" id="system-detail" data-en="All detection subsystems online" data-pt="Todos os subsistemas de detecção online">All detection subsystems online</div>
-            </div>
+        <div class="status-indicator" style="display: flex; justify-content: center; margin: 20px 0;">
+            <div class="status-dot active" id="system-status-dot"></div>
+            <span class="status-text" id="system-status-text" data-en="System Online" data-pt="Sistema Online" style="margin-left: 10px;">System Online</span>
+        </div>
 
-            <div class="data-card">
-                <h3>
-                    <i class="fas fa-satellite-dish"></i>
-                    <span data-en="RF Detection" data-pt="Detecção RF">RF Detection</span>
-                </h3>
-                <div class="gauge">
-                    <div class="gauge-outer">
-                        <div id="rf-gauge-fill" class="gauge-fill"></div>
-                    </div>
-                    <div class="gauge-inner">
-                        <div class="gauge-display" id="rf-value">0</div>
-                    </div>
-                </div>
-                <div class="gauge-label" data-en="Signal Strength (dBm)" data-pt="Força do Sinal (dBm)">Signal Strength (dBm)</div>
-                <div class="data-detail" id="rf-detail" data-en="No drone signals detected" data-pt="Nenhum sinal de drone detectado">No drone signals detected</div>
-            </div>
-            
-            <div class="data-card">
-                <h3>
-                    <i class="fas fa-camera"></i>
-                    <span data-en="Visual Detection" data-pt="Detecção Visual">Visual Detection</span>
-                </h3>
-                <div class="data-value" id="visual-confidence">0%</div>
-                <div class="data-detail" id="visual-detail" data-en="No drones in camera view" data-pt="Nenhum drone no campo de visão">No drones in camera view</div>
-            </div>
+        <button class="refresh-button" id="refresh-data" data-en="Refresh Data" data-pt="Atualizar Dados">Refresh Data</button>
+        <button class="refresh-button active" id="auto-update-toggle" onclick="toggleAutoUpdate()" style="margin-top: 10px;" data-en="Pause Auto-Update" data-pt="Pausar Atualização Automática">Pause Auto-Update</button>
 
-            <div class="data-card">
-                <h3>
-                    <i class="fas fa-microphone-alt"></i>
-                    <span data-en="Acoustic Detection" data-pt="Detecção Acústica">Acoustic Detection</span>
-                </h3>
-                <div class="data-value" id="acoustic-value">0 dB</div>
-                <div class="data-detail" id="acoustic-detail" data-en="No drone sound signatures detected" data-pt="Nenhuma assinatura sonora de drone detectada">No drone sound signatures detected</div>
-            </div>
-
-            <div class="data-card">
-                <h3>
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span data-en="Detected Location" data-pt="Localização Detectada">Detected Location</span>
-                </h3>
-                <div class="data-value" id="location-value">--</div>
-                <div class="data-detail" id="location-detail" data-en="No drones currently tracked" data-pt="Nenhum drone sendo rastreado atualmente">No drones currently tracked</div>
-            </div>
-
-            <div class="data-card">
-                <h3>
-                    <i class="fas fa-history"></i>
-                    <span data-en="Detection History" data-pt="Histórico de Detecções">Detection History</span>
-                </h3>
-                <div class="data-value" id="detection-count">0</div>
-                <div class="data-detail" id="detection-detail" data-en="Total detections in last 24 hours" data-pt="Total de detecções nas últimas 24 horas">Total detections in last 24 hours</div>
-            </div>
+        <div class="detection-list" id="detection-container">
+            <div class="no-detections" id="no-detections" data-en="Loading detections..." data-pt="Carregando detecções...">Loading detections...</div>
+            <!-- Detection items will be added here dynamically -->
         </div>
 
         <div class="data-timestamp" id="last-update" data-en="Last updated: Never" data-pt="Última atualização: Nunca">Last updated: Never</div>
-        
-        <button class="refresh-button" id="refresh-data" data-en="Refresh Data" data-pt="Atualizar Dados">Refresh Data</button>
     </section>
 
     <section id="partners-section" class="partners-section">
@@ -728,9 +731,32 @@
         </div>
     </section>    
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDm9CC0YMtEKIMnSCmfS5YHnLOI8JWDX5I",
+            authDomain: "sentinel-d1c9e.firebaseapp.com",
+            databaseURL: "https://sentinel-d1c9e-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "sentinel-d1c9e",
+            storageBucket: "sentinel-d1c9e.appspot.com",
+            messagingSenderId: "641175735182",
+            appId: "1:641175735182:web:8e165e4a2ad7858d776a65"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Store the last detection count to check for new detections
+        let lastDetectionCount = 0;
+        let autoUpdateInterval;
+        let autoUpdateActive = true;
+        
+        // Create an audio element for the notification sound
+        const notificationSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
+    
         // Dark mode functionality
         if (localStorage.getItem('darkMode') === 'true') {
             document.body.classList.add('dark-mode');
@@ -763,6 +789,9 @@
             document.querySelectorAll('[data-en]').forEach(element => {
                 element.textContent = element.getAttribute(`data-${lang}`);
             });
+            
+            // Update auto-update button text
+            updateAutoUpdateButtonText();
         }
 
         document.getElementById('toggleLanguage').addEventListener('click', function() {
@@ -772,6 +801,8 @@
         // Set initial language
         document.addEventListener("DOMContentLoaded", function() {
             setLanguage(currentLanguage);
+            fetchDetections(true);
+            startAutoUpdate();
         });
 
         // Mobile menu functionality
@@ -793,144 +824,184 @@
             });
         });
 
-        // Live data functionality
-        const API_URL = "https://sentinel-drone-api.onrender.com/api/data";
-        let detectionCount = 0;
-        let lastDetectionTime = null;
-
-        function updateGauge(element, value) {
-            const percentage = value / 100;
-            const degrees = percentage * 180;
-            element.style.transform = `rotate(${degrees}deg)`;
+        // Fetch detections from Firebase
+        function fetchDetections(isInitialLoad = false) {
+            const detectionsRef = database.ref('detections');
             
-            // Update color based on value
-            if (value > 70) {
-                element.style.background = '#dc3545'; // Red for high values
-            } else if (value > 30) {
-                element.style.background = '#ffc107'; // Yellow for medium values
-            } else {
-                element.style.background = '#28a745'; // Green for low values
+            detectionsRef.once('value')
+                .then((snapshot) => {
+                    const detectionsData = snapshot.val();
+                    
+                    // Check if there are new detections (only if not initial load)
+                    if (!isInitialLoad && detectionsData) {
+                        const currentCount = Object.keys(detectionsData).length;
+                        if (currentCount > lastDetectionCount) {
+                            // Play notification sound for new detections
+                            notificationSound.play().catch(err => {
+                                console.warn("Could not play notification sound:", err);
+                            });
+                        }
+                        lastDetectionCount = currentCount;
+                    } else if (detectionsData) {
+                        // Set initial count
+                        lastDetectionCount = Object.keys(detectionsData).length;
+                    }
+                    
+                    displayDetections(detectionsData);
+                    
+                    // Update timestamp
+                    const timestamp = new Date();
+                    const formattedTime = timestamp.toLocaleTimeString();
+                    const formattedDate = timestamp.toLocaleDateString();
+                    
+                    const timeString = currentLanguage === 'en' 
+                        ? `Last updated: ${formattedDate} ${formattedTime}` 
+                        : `Última atualização: ${formattedDate} ${formattedTime}`;
+                    document.getElementById('last-update').textContent = timeString;
+                    
+                    // Show alert if there are recent detections (within last hour)
+                    const currentTime = Date.now();
+                    const oneHourAgo = currentTime - (60 * 60 * 1000);
+                    let hasRecentDetections = false;
+                    
+                    if (detectionsData) {
+                        Object.values(detectionsData).forEach(detection => {
+                            if (detection.timestamp > oneHourAgo) {
+                                hasRecentDetections = true;
+                            }
+                        });
+                    }
+                    
+                    document.getElementById('detection-alert').style.display = hasRecentDetections ? 'block' : 'none';
+                })
+                .catch((error) => {
+                    console.error("Error fetching detections:", error);
+                    document.getElementById('no-detections').textContent = currentLanguage === 'en' 
+                        ? "Error loading detection data." 
+                        : "Erro ao carregar dados de detecção.";
+                });
+        }
+
+        function displayDetections(detectionsData) {
+            const container = document.getElementById('detection-container');
+            container.innerHTML = ''; // Clear previous content
+            
+            if (!detectionsData) {
+                const noDetectionsElement = document.createElement('div');
+                noDetectionsElement.className = 'no-detections';
+                noDetectionsElement.textContent = currentLanguage === 'en' 
+                    ? "No detections recorded yet." 
+                    : "Nenhuma detecção registrada ainda.";
+                container.appendChild(noDetectionsElement);
+                return;
             }
+            
+            // Convert to array and sort by timestamp (newest first)
+            const detectionsArray = Object.entries(detectionsData).map(([id, data]) => {
+                return { id, ...data };
+            });
+            
+            detectionsArray.sort((a, b) => b.timestamp - a.timestamp);
+            
+            detectionsArray.forEach(detection => {
+                const detectionElement = document.createElement('div');
+                detectionElement.className = 'detection-item';
+                
+                const eventText = currentLanguage === 'en' 
+                    ? "Event: " 
+                    : "Evento: ";
+                
+                const date = new Date(detection.timestamp);
+                const formattedDate = date.toLocaleDateString();
+                const formattedTime = date.toLocaleTimeString();
+                
+                detectionElement.innerHTML = `
+                    <div>
+                        <span class="detection-event">${eventText}${detection.event}</span>
+                        <div class="detection-id">ID: ${detection.id}</div>
+                    </div>
+                    <div class="detection-time">${formattedDate} ${formattedTime}</div>
+                `;
+                
+                container.appendChild(detectionElement);
+            });
         }
 
-        function fetchData() {
-            // In a production environment, this would call your actual API
-            // For demo purposes, we'll simulate data
-            simulateData();
-        }
-
-        function simulateData() {
-            const timestamp = new Date();
-            const formattedTime = timestamp.toLocaleTimeString();
-            const formattedDate = timestamp.toLocaleDateString();
+        // Auto-update functionality
+        function startAutoUpdate() {
+            if (autoUpdateInterval) {
+                clearInterval(autoUpdateInterval);
+            }
             
-            // Simulate random sensor values
-            const rfStrength = Math.floor(Math.random() * 100);
-            const visualConfidence = Math.floor(Math.random() * 100);
-            const acousticLevel = Math.floor(Math.random() * 60);
-            
-            // Update UI with simulated data
-            document.getElementById('rf-value').textContent = rfStrength;
-            document.getElementById('visual-confidence').textContent = `${visualConfidence}%`;
-            document.getElementById('acoustic-value').textContent = `${acousticLevel} dB`;
-            
-            updateGauge(document.getElementById('rf-gauge-fill'), rfStrength);
-            
-            // Update timestamp
-            const timeString = currentLanguage === 'en' 
-                ? `Last updated: ${formattedDate} ${formattedTime}` 
-                : `Última atualização: ${formattedDate} ${formattedTime}`;
-            document.getElementById('last-update').textContent = timeString;
-            
-            // Simulate detection alerts (20% chance)
-            const isDroneDetected = Math.random() < 0.2;
-            if (isDroneDetected) {
-                detectionCount++;
-                document.getElementById('detection-count').textContent = detectionCount;
-                document.getElementById('detection-alert').style.display = 'block';
-                
-                // Generate random coordinates
-                const lat = (38 + Math.random() * 0.1).toFixed(6);
-                const lng = (-9 + Math.random() * 0.1).toFixed(6);
-                document.getElementById('location-value').textContent = `${lat}, ${lng}`;
-                
-                const detailText = currentLanguage === 'en'
-                    ? `Drone detected at coordinates ${lat}, ${lng}`
-                    : `Drone detectado nas coordenadas ${lat}, ${lng}`;
-                document.getElementById('location-detail').textContent = detailText;
-                
-                // Update details for each sensor
-                document.getElementById('rf-detail').textContent = currentLanguage === 'en'
-                    ? `Strong RF signature detected at ${rfStrength}%`
-                    : `Assinatura RF forte detectada em ${rfStrength}%`;
-                    
-                document.getElementById('visual-detail').textContent = currentLanguage === 'en'
-                    ? `Drone identified with ${visualConfidence}% confidence`
-                    : `Drone identificado com ${visualConfidence}% de confiança`;
-                    
-                document.getElementById('acoustic-detail').textContent = currentLanguage === 'en'
-                    ? `Drone propeller sound pattern detected`
-                    : `Padrão sonoro de hélice de drone detectado`;
-                    
-                // Update system status to alert mode
-                document.getElementById('system-status-dot').classList.remove('active');
-                document.getElementById('system-status-dot').classList.add('danger');
-                document.getElementById('system-status-text').textContent = currentLanguage === 'en'
-                    ? 'Alert Active'
-                    : 'Alerta Ativo';
-                    
-                document.getElementById('system-detail').textContent = currentLanguage === 'en'
-                    ? 'Unauthorized drone detected - tracking active'
-                    : 'Drone não autorizado detectado - rastreamento ativo';
-                    
-                lastDetectionTime = timestamp;
-            } else {
-                // If no drone currently detected, check if we should clear the alert
-                const minutesSinceLastDetection = lastDetectionTime ? 
-                    (timestamp - lastDetectionTime) / (1000 * 60) : null;
-                
-                // Clear alert if it's been more than 5 minutes since last detection
-                if (!lastDetectionTime || minutesSinceLastDetection > 5) {
-                    document.getElementById('detection-alert').style.display = 'none';
-                    document.getElementById('system-status-dot').classList.remove('danger');
-                    document.getElementById('system-status-dot').classList.add('active');
-                    document.getElementById('system-status-text').textContent = currentLanguage === 'en'
-                        ? 'Operational'
-                        : 'Operacional';
-                        
-                    document.getElementById('system-detail').textContent = currentLanguage === 'en'
-                        ? 'All detection subsystems online'
-                        : 'Todos os subsistemas de detecção online';
-                        
-                    document.getElementById('location-value').textContent = '--';
-                    document.getElementById('location-detail').textContent = currentLanguage === 'en'
-                        ? 'No drones currently tracked'
-                        : 'Nenhum drone sendo rastreado atualmente';
-                        
-                    document.getElementById('rf-detail').textContent = currentLanguage === 'en'
-                        ? 'Background RF noise only'
-                        : 'Apenas ruído RF de fundo';
-                        
-                    document.getElementById('visual-detail').textContent = currentLanguage === 'en'
-                        ? 'No drones in camera view'
-                        : 'Nenhum drone no campo de visão';
-                        
-                    document.getElementById('acoustic-detail').textContent = currentLanguage === 'en'
-                        ? 'Ambient noise only'
-                        : 'Apenas ruído ambiente';
+            autoUpdateInterval = setInterval(() => {
+                if (autoUpdateActive) {
+                    fetchDetections();
                 }
+            }, 5000); // Update every 5 seconds
+            
+            autoUpdateActive = true;
+            updateAutoUpdateButtonText();
+        }
+        
+        function stopAutoUpdate() {
+            if (autoUpdateInterval) {
+                clearInterval(autoUpdateInterval);
+                autoUpdateInterval = null;
+            }
+            
+            autoUpdateActive = false;
+            updateAutoUpdateButtonText();
+        }
+        
+        function toggleAutoUpdate() {
+            if (autoUpdateActive) {
+                stopAutoUpdate();
+            } else {
+                startAutoUpdate();
             }
         }
-
-        // Initial data load
-        document.addEventListener('DOMContentLoaded', function() {
-            fetchData();
-            // Update data every 10 seconds
-            setInterval(fetchData, 10000);
-        });
+        
+        function updateAutoUpdateButtonText() {
+            const autoUpdateBtn = document.getElementById('auto-update-toggle');
+            if (autoUpdateActive) {
+                autoUpdateBtn.textContent = currentLanguage === 'en' 
+                    ? "Pause Auto-Update" 
+                    : "Pausar Atualização Automática";
+                autoUpdateBtn.classList.add('active');
+            } else {
+                autoUpdateBtn.textContent = currentLanguage === 'en' 
+                    ? "Resume Auto-Update" 
+                    : "Retomar Atualização Automática";
+                autoUpdateBtn.classList.remove('active');
+            }
+        }
 
         // Manual refresh button
-        document.getElementById('refresh-data').addEventListener('click', fetchData);
+        document.getElementById('refresh-data').addEventListener('click', () => fetchDetections());
+        
+        // When page is hidden (user switches tabs), pause auto-update
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                // Don't stop the interval entirely, just pause the active state
+                autoUpdateActive = false;
+                updateAutoUpdateButtonText();
+            } else {
+                // When page becomes visible again, resume updates and do an immediate update
+                autoUpdateActive = true;
+                updateAutoUpdateButtonText();
+                fetchDetections();
+            }
+        });
+        
+        // Set up a real-time listener for new detections
+        const detectionsRef = database.ref('detections');
+        detectionsRef.on('child_added', (snapshot) => {
+            // Refresh the display when a new detection is added
+            fetchDetections();
+            
+            // Also show the alert
+            document.getElementById('detection-alert').style.display = 'block';
+        });
     </script>
 </body>
 </html>
