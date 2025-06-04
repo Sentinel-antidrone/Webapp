@@ -483,6 +483,31 @@
             color: #fff3cd;
         }
 
+        /* Sample Detection Styling */
+        .sample-detection {
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .sample-detection h3 {
+            margin-bottom: 15px;
+            color: #007BFF;
+        }
+
+        body.dark-mode .sample-detection h3 {
+            color: #3f93ff;
+        }
+
+        .sample-detection .detection-item {
+            display: inline-block;
+            max-width: 600px;
+        }
+
+        .sample-detection .detection-image img {
+            max-width: 200px;
+            max-height: 150px;
+        }
+
         .partners-section {
             text-align: center;
             padding: 25px 20px;
@@ -571,6 +596,68 @@
 
         body.dark-mode .no-detections {
             color: #aaa;
+        }
+
+        /* Detection image styling */
+        .detection-content {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .detection-info {
+            flex: 1;
+        }
+
+        .detection-image {
+            margin-left: 15px;
+        }
+
+        .detection-image img {
+            max-width: 120px;
+            max-height: 80px;
+            border-radius: 4px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .detection-image img:hover {
+            transform: scale(1.05);
+        }
+
+        body.dark-mode .detection-image img {
+            border-color: #444;
+        }
+
+        /* Image modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-image {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
         @media (max-width: 768px) {
@@ -727,9 +814,55 @@
     <section id="partners-section" class="partners-section">
         <h2 data-en="Partners" data-pt="Parceiros">Partners</h2>
         <div class="partners-container">
-            <!-- Partner logos would go here -->
+            <div class="partner-logo">
+                <a href="https://tecnico.ulisboa.pt" target="_blank">
+                    <img src="/public/images/partner1.png" alt="Partner 1">
+                </a>
+            </div>
+            <div class="partner">
+                <a href="https://www.emfa.pt" target="_blank">
+                    <img class="partner-img light-mode" src="/public/images/partner2l.png" alt="Partner 2">
+                    <img class="partner-img dark-mode" src="/public/images/partner2d.png" alt="Partner 2 Dark Mode">
+                </a>
+            </div>
+            <div class="partner-logo">
+                <a href="https://www.thalesgroup.com" target="_blank">
+                    <img src="/public/images/partner3.png" alt="Partner 3">
+                </a>
+            </div>
+            <div class="partner-logo">
+                <a href="https://mauser.pt" target="_blank">
+                    <img src="/public/images/partner4.png" alt="Partner 4">
+                </a>
+            </div>
         </div>
     </section>    
+
+    <section id="contacts" class="contacts">
+        <div class="footer">
+            <p>© 2025 - All Rights Reserved.</p>
+            <div class="contact-details">
+                <h3 data-en="Contacts" data-pt="Contactos">Contacts</h3>
+                <p><strong data-en="Address:" data-pt="Morada:">Address:</strong> Av. Rovisco Pais Nº1, 1049-001 Lisboa</p>
+                <p><strong data-en="Email:" data-pt="Email:">Email:</strong><a href="mailto:sentinel.antidrone@gmail.com">sentinel.antidrone@gmail.com</a></p>
+            </div>
+            <div class="contact-form">
+                <h3 data-en="Write us" data-pt="Escreva-nos">Write us</h3>
+                <form action="https://formspree.io/f/xovjnyoo" method="POST">
+                    <input type="text" name="name" placeholder="Your Name.." required>
+                    <input type="email" name="email" placeholder="Your Email.." required>
+                    <textarea name="message" placeholder="Your message.." required></textarea>
+                    <button type="submit" data-en="Send" data-pt="Enviar"></button>
+                </form>
+            </div>
+        </div>
+    </section>        
+
+    <!-- Add modal for enlarged images -->
+    <div class="image-modal" id="image-modal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img class="modal-image" id="modal-image-content" src="" alt="Detection">
+    </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
@@ -851,6 +984,7 @@
                     
                     // Update timestamp
                     const timestamp = new Date();
+                    console.log("Updating data at timestamp:", timestamp);
                     const formattedTime = timestamp.toLocaleTimeString();
                     const formattedDate = timestamp.toLocaleDateString();
                     
@@ -896,12 +1030,18 @@
                 return;
             }
             
+            // Debug: Log the total number of detections
+            console.log(`Processing ${Object.keys(detectionsData).length} detections`);
+            
             // Convert to array and sort by timestamp (newest first)
             const detectionsArray = Object.entries(detectionsData).map(([id, data]) => {
                 return { id, ...data };
             });
             
             detectionsArray.sort((a, b) => b.timestamp - a.timestamp);
+            
+            // Debug: Log all timestamps and URLs
+            console.log("========= DETECTION TIMESTAMPS AND URLS =========");
             
             detectionsArray.forEach(detection => {
                 const detectionElement = document.createElement('div');
@@ -915,18 +1055,63 @@
                 const formattedDate = date.toLocaleDateString();
                 const formattedTime = date.toLocaleTimeString();
                 
+                // Create image URL using the detection timestamp
+                const imageUrl = `https://raw.githubusercontent.com/Sentinel-antidrone/Webapp/refs/heads/main/public/detections/${detection.timestamp}.jpg`;
+                
+                // Debug: Log each detection's timestamp and URL
+                console.log(`Detection ID: ${detection.id}`);
+                console.log(`Timestamp: ${detection.timestamp} (${formattedDate} ${formattedTime})`);
+                console.log(`Image URL: ${imageUrl}`);
+                console.log("---");
+                
                 detectionElement.innerHTML = `
-                    <div>
-                        <span class="detection-event">${eventText}${detection.event}</span>
-                        <div class="detection-id">ID: ${detection.id}</div>
+                    <div class="detection-content">
+                        <div class="detection-info">
+                            <span class="detection-event">${eventText}${detection.event}</span>
+                            <div class="detection-id">ID: ${detection.id}</div>
+                            <div class="detection-time">${formattedDate} ${formattedTime}</div>
+                            <div class="detection-timestamp">Time Stamp: ${detection.timestamp}</div>
+                        </div>
+                        <div class="detection-image">
+                            <img src="${imageUrl}" alt="Detection ${detection.id}" 
+                                 onerror="this.onerror=null; this.src='https://via.placeholder.com/120x80?text=No+Image'; this.alt='Image not available'"
+                                 onclick="openImageModal('${imageUrl}')">
+                        </div>
                     </div>
-                    <div class="detection-time">${formattedDate} ${formattedTime}</div>
                 `;
                 
                 container.appendChild(detectionElement);
             });
+            
+            console.log("=============== END OF DETECTIONS ===============");
         }
 
+        // Functions for image modal
+        function openImageModal(imageSrc) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-image-content');
+            modal.style.display = "flex";
+            modalImg.src = imageSrc;
+        }
+        
+        function closeModal() {
+            document.getElementById('image-modal').style.display = "none";
+        }
+        
+        // Close modal when clicking outside the image
+        document.getElementById('image-modal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal when ESC key is pressed
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape" && document.getElementById('image-modal').style.display === "flex") {
+                closeModal();
+            }
+        });
+        
         // Auto-update functionality
         function startAutoUpdate() {
             if (autoUpdateInterval) {
