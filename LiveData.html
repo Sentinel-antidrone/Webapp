@@ -1030,18 +1030,12 @@
                 return;
             }
             
-            // Debug: Log the total number of detections
-            console.log(`Processing ${Object.keys(detectionsData).length} detections`);
-            
             // Convert to array and sort by timestamp (newest first)
             const detectionsArray = Object.entries(detectionsData).map(([id, data]) => {
                 return { id, ...data };
             });
             
             detectionsArray.sort((a, b) => b.timestamp - a.timestamp);
-            
-            // Debug: Log all timestamps and URLs
-            console.log("========= DETECTION TIMESTAMPS AND URLS =========");
             
             detectionsArray.forEach(detection => {
                 const detectionElement = document.createElement('div');
@@ -1055,14 +1049,8 @@
                 const formattedDate = date.toLocaleDateString();
                 const formattedTime = date.toLocaleTimeString();
                 
-                // Create image URL using the detection timestamp
-                const imageUrl = `https://raw.githubusercontent.com/Sentinel-antidrone/Webapp/refs/heads/main/public/detections/${detection.timestamp}.jpg`;
-                
-                // Debug: Log each detection's timestamp and URL
-                console.log(`Detection ID: ${detection.id}`);
-                console.log(`Timestamp: ${detection.timestamp} (${formattedDate} ${formattedTime})`);
-                console.log(`Image URL: ${imageUrl}`);
-                console.log("---");
+                // Use the image_url directly from the detection data
+                const imageUrl = detection.image_url || `https://via.placeholder.com/120x80?text=No+Image`;
                 
                 detectionElement.innerHTML = `
                     <div class="detection-content">
@@ -1070,7 +1058,6 @@
                             <span class="detection-event">${eventText}${detection.event}</span>
                             <div class="detection-id">ID: ${detection.id}</div>
                             <div class="detection-time">${formattedDate} ${formattedTime}</div>
-                            <div class="detection-timestamp">Time Stamp: ${detection.timestamp}</div>
                         </div>
                         <div class="detection-image">
                             <img src="${imageUrl}" alt="Detection ${detection.id}" 
@@ -1082,8 +1069,6 @@
                 
                 container.appendChild(detectionElement);
             });
-            
-            console.log("=============== END OF DETECTIONS ===============");
         }
 
         // Functions for image modal
