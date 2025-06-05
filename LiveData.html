@@ -620,11 +620,12 @@
             object-fit: cover;
             border: 1px solid #ddd;
             cursor: pointer;
+            transform: rotate(180deg);
             transition: transform 0.2s;
         }
 
         .detection-image img:hover {
-            transform: scale(1.05);
+            transform: scale(1.05) rotate(180deg);
         }
 
         body.dark-mode .detection-image img {
@@ -658,6 +659,10 @@
             font-size: 35px;
             font-weight: bold;
             cursor: pointer;
+        }
+
+        .flip-image {
+            transform: rotate(180deg);
         }
 
         @media (max-width: 768px) {
@@ -861,7 +866,7 @@
     <!-- Add modal for enlarged images -->
     <div class="image-modal" id="image-modal">
         <span class="modal-close" onclick="closeModal()">&times;</span>
-        <img class="modal-image" id="modal-image-content" src="" alt="Detection">
+        <img class="modal-image flip-image" id="modal-image-content" src="" alt="Detection">
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -1061,6 +1066,7 @@
                         </div>
                         <div class="detection-image">
                             <img src="${imageUrl}" alt="Detection ${detection.id}" 
+                                 class="flip-image"
                                  onerror="this.onerror=null; this.src='https://via.placeholder.com/120x80?text=No+Image'; this.alt='Image not available'"
                                  onclick="openImageModal('${imageUrl}')">
                         </div>
