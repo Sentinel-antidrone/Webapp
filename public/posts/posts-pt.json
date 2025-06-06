@@ -1,6 +1,13 @@
 [
     {
         "title": "Progresso no Nosso Sistema de Deteção Anti-Drones",
+        "date": "6 de Junho de 2025",
+        "content": "Nesta quarta-feira, dia 4 de junho, realizámos uma reunião muito produtiva nas instalações da E.M.F.A., contando com a presença do Tenente-Coronel João Boita e do Major Francisco Machado. O encontro teve como principal objetivo aprofundar a discussão sobre os vários aspetos do nosso projeto...",
+        "image": "/public/images/post_6.jpg",
+        "link": "/public/posts/post_6.html"
+    },
+    {
+        "title": "Progresso no Nosso Sistema de Deteção Anti-Drones",
         "date": "15 de março de 2025",
         "content": "Esta semana, alcançámos progressos significativos no treino do nosso modelo de aprendizado de máquina. Temos vindo a refinar o algoritmo, focando-nos em melhorar a sua precisão na distinção entre drones e outros objetos, como pássaros. Cada iteração aproxima-nos de um sistema de deteção mais fiável e eficiente...",
         "image": "/public/images/post_5.jpg",
