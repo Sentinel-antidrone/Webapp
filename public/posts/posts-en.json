@@ -1,6 +1,13 @@
 [
     {
         "title": "Progress on Our Anti-Drone Detection System",
+        "date": "June 6, 2025",
+        "content": "This Wednesday, June 4th, we held a very productive meeting at E.M.F.A.'s facilities, attended by Lieutenant Colonel João Boita and Major Francisco Machado. The main goal of the meeting was to delve into various aspects of our project, from its current development to future growth prospects...",
+        "image": "/public/images/post_6.jpg",
+        "link": "/public/posts/post_6.html"
+    },
+    {
+        "title": "Progress on Our Anti-Drone Detection System",
         "date": "March 15, 2025",
         "content": "This week, we made significant progress in training our machine learning model. We've been refining the algorithm, focusing on improving its accuracy in distinguishing between drones and other objects like birds. Each iteration brings us closer to a reliable and efficient detection system...",
         "image": "/public/images/post_5.jpg",
