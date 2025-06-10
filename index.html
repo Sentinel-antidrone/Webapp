@@ -660,27 +660,12 @@
     <header>
         <div class="logo">
             <img 
-                src="/public/images/Logo_white.png" 
+                src="/public/images/Logo.png" 
                 alt="Sentinel Logo" 
                 id="sentinel-logo"
                 style="max-width: 120px; width: 100%; height: auto; margin-bottom: 0;">
             <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
         </div>
-        <script>
-            // Logo switching for dark/light mode
-            function updateLogo() {
-                const logo = document.getElementById('sentinel-logo');
-                if (document.body.classList.contains('dark-mode')) {
-                    logo.src = '/public/images/Logo_white.png';
-                } else {
-                    logo.src = '/public/images/Logo_white.png';
-                }
-            }
-            // Initial logo set
-            updateLogo();
-            // Update logo on dark mode toggle
-            document.getElementById('darkModeToggle').addEventListener('change', updateLogo);
-        </script>
         <nav>
             <a href="/" data-en="Home" data-pt="Início">Home</a>
             <a href="/#about" data-en="About" data-pt="Sobre">About</a>
