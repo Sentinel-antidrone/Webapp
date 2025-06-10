@@ -3,42 +3,84 @@
         "title": "Progresso no Nosso Sistema de Deteção Anti-Drones",
         "date": "6 de Junho de 2025",
         "content": "Nesta quarta-feira, dia 4 de junho, realizámos uma reunião muito produtiva nas instalações da E.M.F.A., contando com a presença do Tenente-Coronel João Boita e do Major Francisco Machado. O encontro teve como principal objetivo aprofundar a discussão sobre os vários aspetos do nosso projeto...",
-        "image": "/public/images/post_6.jpg",
-        "link": "/public/posts/post_6.html"
+        "image": "/public/images/post_12.jpg",
+        "link": "/public/posts/post_12.html"
+    },
+    {
+        "title": "Melhorar o Movimento da Câmara e a Estabilidade do Seguimento",
+        "date": "18 de maio de 2025",
+        "content": "Esta semana, continuámos a refinar o nosso protótipo para garantir que o movimento dos servomotores — que controlam a orientação da câmara — se torne mais estável e menos tremido durante o funcionamento...",
+        "image": "/public/images/post_11.gif",
+        "link": "post_11.html"
+    },
+    {
+        "title": "Montagem do Primeiro Protótipo e Testes Iniciais",
+        "date": "11 de maio de 2025",
+        "content": "Esta semana foi marcada com um passo importante no nosso projeto: montámos o protótipo completo e realizámos os primeiros testes em cenários reais...",
+        "image": "/public/images/post_10.jpeg",
+        "link": "post_10.html"
+    },
+    {
+        "title": "Componentes Finais Adquiridos – Início da Fase de Montagem",
+        "date": "4 de maio de 2025",
+        "content": "Conseguimos adquirir com sucesso todos os componentes necessários para o nosso protótipo final. O próximo passo é montar e testar tudo, para verificar se o sistema funciona como esperado...",
+        "image": "/public/images/post_9.jpg",
+        "link": "post_9.html"
+    },
+    {
+        "title": "Testes de Controlo dos Rotores e Ajustes de Hardware",
+        "date": "27 de abril de 2025",
+        "content": "Esta semana, desenvolvemos a primeira versão do código responsável pela rotação dos rotores com base nos dados da imagem. Os testes iniciais foram promissores — os rotores estão a responder corretamente e a rodar como esperado. O próximo passo é integrar a câmara e testar o sistema com imagens reais, para garantir que tudo funciona na prática...",
+        "image": "/public/images/post_8.jpg",
+        "link": "post_8.html"
+    },
+    {
+        "title": "Progresso no Nosso Sistema de Deteção Anti-Drones",
+        "date": "29 de março de 2025",
+        "content": "Esta semana, o progresso do nosso projeto foi um pouco mais lento devido aos prazos de entrega de trabalhos importantes de outras disciplinas. No entanto, recebemos boas notícias — já podemos levantar os componentes em falta, especificamente o Raspberry Pi 5 e o cartão de memória de 64GB...",
+        "image": "/public/images/post_7.jpg",
+        "link": "post_7.html"
+    },
+    {
+        "title": "Progresso do Treino e Confiança no Nosso Modelo",
+        "date": "22 de março de 2025",
+        "content": "Esta semana, continuámos o treino do nosso modelo de aprendizagem automática, deixando um computador a correr durante 24 horas para garantir um treino contínuo. Agora, estamos confiantes de que o modelo é capaz de detectar drones com precisão e distingui-los de outros objetos...",
+        "image": "/public/images/post_6.jpeg",
+        "link": "post_6.html"
     },
     {
         "title": "Progresso no Nosso Sistema de Deteção Anti-Drones",
         "date": "15 de março de 2025",
         "content": "Esta semana, alcançámos progressos significativos no treino do nosso modelo de aprendizado de máquina. Temos vindo a refinar o algoritmo, focando-nos em melhorar a sua precisão na distinção entre drones e outros objetos, como pássaros. Cada iteração aproxima-nos de um sistema de deteção mais fiável e eficiente...",
         "image": "/public/images/post_5.jpg",
-        "link": "/public/posts/post_5.html"
+        "link": "post_5.html"
     },
     {
         "title": "Atualização de Progresso: Aperfeiçoamento do Aprendizado de Máquina e Perspetivas da Indústria",
         "date": "8 de março de 2025",
         "content": "Esta semana marcou um progresso significativo no nosso projeto, especialmente em duas áreas-chave: o aperfeiçoamento do nosso modelo de aprendizado de máquina e discussões enriquecedoras com especialistas da indústria...",
         "image": "/public/images/post_4.jpg",
-        "link": "/public/posts/post_4.html"
+        "link": "post_4.html"
     },
     {
         "title": "Atualização de Progresso: Treino do Modelo e Finalização dos Componentes",
         "date": "1 de março de 2025",
         "content": "Esta semana, começámos o treino do algoritmo de aprendizagem automática que irá alimentar o nosso sistema de deteção de drones: o YOLO v11. Até agora, treinámos o modelo com aproximadamente 10.000 imagens, mas ainda há um longo caminho a percorrer em termos de aperfeiçoamento e melhoria da sua precisão. O processo de afinação do modelo continuará, à medida que procuramos otimizar o seu desempenho para cenários reais de deteção...",
         "image": "/public/images/post_3.jpg",
-        "link": "/public/posts/post_3.html"
+        "link": "post_3.html"
     },
     {
         "title": "Finalização da Nossa Proposta de Projeto: Foco na Deteção e em Soluções Baseadas em IA",
         "date": "21 de fevereiro de 2025",
         "content": "À medida que avançávamos com o nosso projeto, uma das fases mais cruciais foi a finalização da Proposta de Projeto e a definição da direção exata que tomaríamos. Depois de considerar várias abordagens e discutir as nossas opções com especialistas do setor, conseguimos afunilar o nosso foco e tomar decisões fundamentais sobre a estrutura do sistema...",
         "image": "/public/images/post_2.png",
-        "link": "/public/posts/post_2.html"
+        "link": "post_2.html"
     },
     {
         "title": "Modelação do Nosso Sistema de Deteção Anti-Drones: Do Conceito à Implementação",
         "date": "14 de fevereiro de 2025",
         "content": "Ao embarcarmos no desenvolvimento do nosso sistema de deteção e neutralização de drones, um dos primeiros desafios que enfrentámos foi definir a abordagem mais eficaz para a implementação. Com diversas tecnologias disponíveis e várias metodologias de deteção a considerar, dedicámos um tempo significativo à pesquisa e discussão antes de chegarmos a um plano concreto...",
         "image": "/public/images/post_1.jpg",
-        "link": "/public/posts/post_1.html"
+        "link": "post_1.html"
     }
 ]

@@ -3,7 +3,49 @@
         "title": "Progress on Our Anti-Drone Detection System",
         "date": "June 6, 2025",
         "content": "This Wednesday, June 4th, we held a very productive meeting at E.M.F.A.'s facilities, attended by Lieutenant Colonel João Boita and Major Francisco Machado. The main goal of the meeting was to delve into various aspects of our project, from its current development to future growth prospects...",
-        "image": "/public/images/post_6.jpg",
+        "image": "/public/images/post_12.jpg",
+        "link": "/public/posts/post_12.html"
+    },
+    {
+        "title": "Improving Camera Movement and Tracking Stability",
+        "date": "May 18, 2025",
+        "content": "This week, we continued refining our prototype to ensure that the movement of the servo motors — which control the camera’s orientation — becomes more stable and less shaky during operation...",
+        "image": "/public/images/post_11.gif",
+        "link": "/public/posts/post_11.html"
+    },
+    {
+        "title": "First Prototype Assembly and Initial Tests",
+        "date": "May 11, 2025",
+        "content": "This week marked a significant milestone in our project: we assembled the full prototype and carried out the first real-world tests of our system...",
+        "image": "/public/images/post_10.jpeg",
+        "link": "/public/posts/post_10.html"
+    },
+    {
+        "title": "Final Components Acquired – Assembly Phase Begins",
+        "date": "May 4, 2025",
+        "content": "We have successfully acquired all the components required for our final prototype. The next step is to assemble and test everything to verify that our system performs as expected...",
+        "image": "/public/images/post_9.jpg",
+        "link": "/public/posts/post_9.html"
+    },
+    {
+        "title": "Rotor Control Testing and Hardware Adjustments",
+        "date": "April 27, 2025",
+        "content": "This week, we developed the first version of the code responsible for rotating the rotors based on the image data. Initial tests were promising — the rotors are responding correctly and rotating as expected. The next step is to integrate the camera and test the system with real-world footage to ensure everything works in practice...",
+        "image": "/public/images/post_8.jpg",
+        "link": "/public/posts/post_8.html"
+    },
+    {
+        "title": "Progress and Upcoming Steps",
+        "date": "March 29, 2025",
+        "content": "This week, progress on our project has been a bit slower due to the deadlines for major assignments from other courses. However, we received good news — we can now pick up the remaining components, specifically the Raspberry Pi 5 and the 64GB memory card...",
+        "image": "/public/images/post_7.jpg",
+        "link": "/public/posts/post_7.html"
+    },
+    {
+        "title": "Training Progress and Confidence in Our Model",
+        "date": "March 22, 2025",
+        "content": "This week, we continued training our machine learning model, leaving a computer running for 24 hours to ensure continuous training. We're now confident that the model is capable of accurately detecting drones and distinguishing them from other objects...",
+        "image": "/public/images/post_6.jpeg",
         "link": "/public/posts/post_6.html"
     },
     {
