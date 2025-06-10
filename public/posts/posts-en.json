@@ -1,8 +1,22 @@
 [
     {
-        "title": "Progress on Our Anti-Drone Detection System",
+        "title": "Project Completion and Final Reflections",
+        "date": "June 10, 2025",
+        "content": "As we reach the final week of our drone detection project, our focus has shifted towards preparing comprehensive presentation materials and conducting final system validation. The complete prototype has been successfully assembled and fabricated through precision metalwork and cutting processes...",
+        "image": "/public/images/post_14.jpg",
+        "link": "/public/posts/post_14.html"
+    },
+    {
+        "title": "Meeting at E.M.F.A.",
         "date": "June 4, 2025",
         "content": "This Wednesday, June 4th, we held a very productive meeting at E.M.F.A.'s facilities, attended by Lieutenant Colonel João Boita and Major Francisco Machado. The main goal of the meeting was to delve into various aspects of our project, from its current development to future growth prospects...",
+        "image": "/public/images/post_13.jpg",
+        "link": "/public/posts/post_13.html"
+    },
+    {
+        "title": "System Integration Complete - Drone Detection Now Fully Operational",
+        "date": "May 25, 2025",
+        "content": "This week marked a significant milestone in our drone detection project as we completed the final tweaks to the rotor movement system and achieved full system integration. We finalized the precise calibration of our rotor movement mechanisms, ensuring optimal positioning and tracking...",
         "image": "/public/images/post_12.jpg",
         "link": "/public/posts/post_12.html"
     },
