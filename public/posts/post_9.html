@@ -83,6 +83,7 @@
             align-items: center;
             gap: 10px;
             padding-left: 10px;
+        }
 
         #sentinel-logo {
             max-width: 120px;
@@ -90,7 +91,6 @@
             height: auto;
             margin-bottom: 0;
             transition: max-width 0.3s ease;
-        }
         }
 
         header nav {
@@ -454,9 +454,6 @@
         .menu-icon {
             display: none;
 
-            #sentinel-logo {
-                max-width: 80px; /* Logo menor em tablets */
-            }
             font-size: 1.8rem;
             cursor: pointer;
             transition: color 0.3s;
@@ -482,9 +479,6 @@
             .menu-icon {
                 display: block;
 
-            #sentinel-logo {
-                max-width: 80px; /* Logo menor em tablets */
-            }
             }
 
             header nav {
@@ -550,13 +544,17 @@
 
         @media (max-width: 480px) {
             .partner-logo img {
-            #sentinel-logo {
-                max-width: 60px; /* Logo ainda menor para smartphones */
-            }
             
-            .logo {
-                gap: 8px; /* Espaço adequado entre o logo e o ícone do menu */
-            }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-left: 10px;
+        }
+
+
 
                 width: 120px;
                 height: 120px;
@@ -594,13 +592,17 @@
 
         @media (max-width: 480px) {
             .toggle-container {
-            #sentinel-logo {
-                max-width: 60px; /* Logo ainda menor para smartphones */
-            }
             
-            .logo {
-                gap: 8px; /* Espaço adequado entre o logo e o ícone do menu */
-            }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-left: 10px;
+        }
+
+
 
                 gap: 5px;
             }
