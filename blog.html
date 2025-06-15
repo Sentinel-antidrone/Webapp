@@ -87,6 +87,14 @@
             padding-left: 10px;
         }
 
+        #sentinel-logo {
+            max-width: 120px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 0;
+            transition: max-width 0.3s ease;
+        }
+
         header nav {
             display: flex;
             gap: 15px;
@@ -406,11 +414,15 @@
                 display: block;
             }
 
+            #sentinel-logo {
+                max-width: 80px; /* Logo menor em tablets */
+            }
+
             header nav {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 60px;
+                top: 100%; /* Alinha com a parte inferior do header */
                 left: 0;
                 right: 0;
                 background-color: #ececec;
@@ -482,6 +494,14 @@
 
             .post a {
                 font-size: 1rem;
+            }
+
+            #sentinel-logo {
+                max-width: 60px; /* Logo ainda menor para smartphones */
+            }
+            
+            .logo {
+                gap: 8px; /* Espaço adequado entre o logo e o ícone do menu */
             }
 
             .partner-logo img {
@@ -558,8 +578,7 @@
             <img 
                 src="/public/images/Logo.png" 
                 alt="Sentinel Logo" 
-                id="sentinel-logo"
-                style="max-width: 120px; width: 100%; height: auto; margin-bottom: 0;">
+                id="sentinel-logo">
             <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
         </div>
         <nav>

@@ -83,6 +83,14 @@
             align-items: center;
             gap: 10px;
             padding-left: 10px;
+
+        #sentinel-logo {
+            max-width: 120px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 0;
+            transition: max-width 0.3s ease;
+        }
         }
 
         header nav {
@@ -445,6 +453,10 @@
 
         .menu-icon {
             display: none;
+
+            #sentinel-logo {
+                max-width: 80px; /* Logo menor em tablets */
+            }
             font-size: 1.8rem;
             cursor: pointer;
             transition: color 0.3s;
@@ -469,13 +481,17 @@
         @media (max-width: 768px) {
             .menu-icon {
                 display: block;
+
+            #sentinel-logo {
+                max-width: 80px; /* Logo menor em tablets */
+            }
             }
 
             header nav {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 60px;
+                top: 100%; /* Alinha com a parte inferior do header */
                 left: 0;
                 right: 0;
                 background-color: #ececec;
@@ -534,6 +550,14 @@
 
         @media (max-width: 480px) {
             .partner-logo img {
+            #sentinel-logo {
+                max-width: 60px; /* Logo ainda menor para smartphones */
+            }
+            
+            .logo {
+                gap: 8px; /* Espaço adequado entre o logo e o ícone do menu */
+            }
+
                 width: 120px;
                 height: 120px;
             }
@@ -570,6 +594,14 @@
 
         @media (max-width: 480px) {
             .toggle-container {
+            #sentinel-logo {
+                max-width: 60px; /* Logo ainda menor para smartphones */
+            }
+            
+            .logo {
+                gap: 8px; /* Espaço adequado entre o logo e o ícone do menu */
+            }
+
                 gap: 5px;
             }
 
@@ -613,7 +645,10 @@
 <body>
     <header>
         <div class="logo">
-            <span>Sentinel</span>
+            <img 
+                src="/public/images/Logo.png" 
+                alt="Sentinel Logo" 
+                id="sentinel-logo">
             <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
         </div>
         <nav>
@@ -655,15 +690,15 @@
     </header>
     
     <section class="post-container">
-        <h1 data-en="Progress on Our Anti-Drone Detection System" data-pt="Progresso no Nosso Sistema de Deteção Anti-Drones">Test Post</h1>
+        <h1 data-en="System Integration Complete - Drone Detection Now Fully Operational" data-pt="Integração do sistema completa - Deteção de drones agora totalmente operacional">Test Post</h1>
         <div class="post-date">
             <strong data-en="Date:" data-pt="Data:">Date:</strong> 
-            <span data-en="June 4, 2025" data-pt="4 de junho de 2025"></span>
+            <span data-en="May 25, 2025" data-pt="25 de maio de 2025"></span>
         </div>
         <div class="post-content">
-            <p data-pt="Esta semana marcou um marco significativo no nosso projeto de deteção de drones, com a conclusão dos ajustes finais no sistema de movimento do rotor e a integração completa do sistema. Finalizámos a calibração precisa dos nossos mecanismos de movimento do rotor, garantindo um posicionamento ideal e precisão de rastreamento para deteção de drones em todos os cenários operacionais." data-en="This week marked a significant milestone in our drone detection project as we completed the final tweaks to the rotor movement system and achieved full system integration. We finalized the precise calibration of our rotor movement mechanisms, ensuring optimal positioning and tracking accuracy for drone detection across all operational scenarios."></p>
+            <p data-pt="Esta semana marcou um marco significativo no nosso projeto de deteção de drones, com a conclusão dos ajustes finais no sistema de movimento do rotor e a integração completa do sistema. Finalizámos a calibração precisa dos nossos mecanismos de movimento do rotor, garantindo um posicionamento ideal e precisão." data-en="This week marked a significant milestone in our drone detection project as we completed the final tweaks to the rotor movement system and achieved full system integration. We finalized the precise calibration of our rotor movement mechanisms, ensuring optimal positioning and tracking accuracy for drone detection across all operational scenarios."></p>
             
-            <p data-pt="A nossa equipa implementou e implantou com sucesso a aplicação web ao nível municipal. Este painel de controlo abrangente fornece visualização em tempo real do estado atual do sistema de deteção, monitorização e registo de eventos em direto, bem como dados históricos de deteção e análises. Integrámos capacidades avançadas de notificação que são acionadas automaticamente quando um drone é detetado, permitindo ao sistema capturar fotografias dos drones detetados, gerar alertas com registo de hora preciso, enviar notificações imediatas para a interface da nossa aplicação web e manter um registo abrangente de todos os eventos de deteção." data-en="Our team successfully implemented and deployed the web application at the municipality level. This comprehensive dashboard provides real-time visualization of current detection system status, live event monitoring and logging, as well as historical detection data and analytics. We've integrated advanced notification capabilities that automatically trigger when a drone is detected, allowing the system to capture photographs of detected drones, generate timestamped alerts with precise detection timing, send immediate notifications to our web application interface, and maintain a comprehensive log of all detection events."></p>
+            <p data-pt="A nossa equipa implementou e colocou em funcionamento a aplicação web a nível municipal. Este painel abrangente permite a visualização em tempo real do estado atual do sistema de deteção, monitorização e registo de eventos ao vivo, bem como acesso a dados históricos de deteção e respetiva análise. Integrámos capacidades avançadas de notificação que são automaticamente ativadas quando um drone é detetado, permitindo ao sistema capturar fotografias dos drones detetados, gerar alertas com carimbo temporal e hora exata da deteção, enviar notificações imediatas para a interface da aplicação web e manter um registo completo de todos os eventos de deteção." data-en="Our team successfully implemented and deployed the web application at the municipality level. This comprehensive dashboard provides real-time visualization of current detection system status, live event monitoring and logging, as well as historical detection data and analytics. We've integrated advanced notification capabilities that automatically trigger when a drone is detected, allowing the system to capture photographs of detected drones, generate timestamped alerts with precise detection timing, send immediate notifications to our web application interface, and maintain a comprehensive log of all detection events."></p>
             
             <p data-pt="O sistema de deteção de drones está agora totalmente operacional e passou com sucesso por todas as fases de teste. A solução integrada combina precisão de hardware com inteligência de software para fornecer capacidades fiáveis de monitorização de drones em tempo real. Após extensos testes e validação, temos o prazer de anunciar que o sistema está agora disponível para uso ativo. A combinação da nossa mecânica de rotor refinada, interface web intuitiva e sistema de alerta automático fornece uma solução completa para as necessidades municipais de deteção e monitorização de drones." data-en="The drone detection system is now fully operational and has successfully passed all testing phases. The integrated solution combines hardware precision with software intelligence to deliver reliable, real-time drone monitoring capabilities. After extensive testing and validation, we're pleased to announce that the system is now available for active use. The combination of our refined rotor mechanics, intuitive web interface, and automated alert system provides a complete solution for municipal drone detection and monitoring needs."></p>
             

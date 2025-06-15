@@ -83,6 +83,14 @@
             align-items: center;
             gap: 10px;
             padding-left: 10px;
+
+        #sentinel-logo {
+            max-width: 120px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 0;
+            transition: max-width 0.3s ease;
+        }
         }
 
         header nav {
@@ -445,6 +453,10 @@
 
         .menu-icon {
             display: none;
+
+            #sentinel-logo {
+                max-width: 80px; /* Logo menor em tablets */
+            }
             font-size: 1.8rem;
             cursor: pointer;
             transition: color 0.3s;
@@ -469,13 +481,17 @@
         @media (max-width: 768px) {
             .menu-icon {
                 display: block;
+
+            #sentinel-logo {
+                max-width: 80px; /* Logo menor em tablets */
+            }
             }
 
             header nav {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 60px;
+                top: 100%; /* Alinha com a parte inferior do header */
                 left: 0;
                 right: 0;
                 background-color: #ececec;
@@ -534,6 +550,14 @@
 
         @media (max-width: 480px) {
             .partner-logo img {
+            #sentinel-logo {
+                max-width: 60px; /* Logo ainda menor para smartphones */
+            }
+            
+            .logo {
+                gap: 8px; /* Espaço adequado entre o logo e o ícone do menu */
+            }
+
                 width: 120px;
                 height: 120px;
             }
@@ -570,6 +594,14 @@
 
         @media (max-width: 480px) {
             .toggle-container {
+            #sentinel-logo {
+                max-width: 60px; /* Logo ainda menor para smartphones */
+            }
+            
+            .logo {
+                gap: 8px; /* Espaço adequado entre o logo e o ícone do menu */
+            }
+
                 gap: 5px;
             }
 
@@ -613,7 +645,10 @@
 <body>
     <header>
         <div class="logo">
-            <span>Sentinel</span>
+            <img 
+                src="/public/images/Logo.png" 
+                alt="Sentinel Logo" 
+                id="sentinel-logo">
             <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
         </div>
         <nav>
@@ -655,10 +690,10 @@
     </header>
     
     <section class="post-container">
-        <h1 data-en="Progress on Our Anti-Drone Detection System" data-pt="Progresso no Nosso Sistema de Deteção Anti-Drones">Test Post</h1>
+        <h1 data-en="Project Completion and Final Reflections" data-pt="Conclusão do projeto e reflexões finais">Test Post</h1>
         <div class="post-date">
             <strong data-en="Date:" data-pt="Data:">Date:</strong> 
-            <span data-en="June 4, 2025" data-pt="4 de junho de 2025"></span>
+            <span data-en="June 10, 2025" data-pt="10 de junho de 2025"></span>
         </div>
         <div class="post-content">
             <p data-pt="Ao chegarmos à última semana do nosso projeto de deteção de drones, o nosso foco mudou para a preparação de materiais abrangentes de apresentação e a realização da validação final do sistema. O protótipo completo foi montado e fabricado com sucesso através de processos precisos de metalurgia e corte, representando o culminar de meses de trabalho de engenharia e desenvolvimento." data-en="As we reach the final week of our drone detection project, our focus has shifted towards preparing comprehensive presentation materials and conducting final system validation. The complete prototype has been successfully assembled and fabricated through precision metalwork and cutting processes, representing the culmination of months of engineering and development work."></p>
