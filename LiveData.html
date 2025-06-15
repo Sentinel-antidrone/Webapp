@@ -779,8 +779,9 @@
                 left: 0;
                 right: 0;
                 background-color: #ececec;
-                padding: 20px;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                z-index: 100;
             }
 
             body.dark-mode header nav {
@@ -789,6 +790,17 @@
 
             header nav.active {
                 display: flex;
+            }
+
+            header nav a {
+                padding: 10px;
+                font-size: 1.2rem;
+                text-align: center;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            }
+
+            body.dark-mode header nav a {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             }
 
             .data-grid {

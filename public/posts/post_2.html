@@ -441,10 +441,6 @@
 
         .menu-icon {
             display: none;
-
-            #sentinel-logo {
-                max-width: 80px; /* Logo menor em tablets */
-            }
             font-size: 1.8rem;
             cursor: pointer;
             transition: color 0.3s;
@@ -458,10 +454,10 @@
         @media (max-width: 768px) {
             .menu-icon {
                 display: block;
+            }
 
             #sentinel-logo {
                 max-width: 80px; /* Logo menor em tablets */
-            }
             }
 
             header nav {
@@ -495,7 +491,7 @@
             body.dark-mode header nav a {
                 border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             }
-        
+
             .partners-container {
                 flex-direction: row;
             }
@@ -517,35 +513,13 @@
             }
 
             .post-image {
-            max-width: 80%;
-            height: auto;
-            margin: 10px 0;
-            margin-top: 0px;
-            border-radius: 8px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .partner-logo img {
-            #sentinel-logo {
-                max-width: 60px; /* Logo ainda menor para smartphones */
-            }
-            
-            .logo {
-                gap: 8px; /* Espaço adequado entre o logo e o ícone do menu */
+                max-width: 80%;
+                height: auto;
+                margin: 10px 0;
+                margin-top: 0px;
+                border-radius: 8px;
             }
 
-                width: 120px;
-                height: 120px;
-            }
-
-            .contact-form input,
-            .contact-form textarea {
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 768px) {
             header {
                 width: 100%;
                 padding: 10px;
@@ -570,7 +544,6 @@
         }
 
         @media (max-width: 480px) {
-            .toggle-container {
             #sentinel-logo {
                 max-width: 60px; /* Logo ainda menor para smartphones */
             }
@@ -579,6 +552,17 @@
                 gap: 8px; /* Espaço adequado entre o logo e o ícone do menu */
             }
 
+            .partner-logo img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                font-size: 0.9rem;
+            }
+
+            .toggle-container {
                 gap: 5px;
             }
 
@@ -687,6 +671,7 @@
             </button>
             <button class="next" onclick="window.location.href='post_3.html'">
                 <span data-en="Next Post" data-pt="Próximo Post">Next Post</span>
+            </button>
         </div>
     </section>
 

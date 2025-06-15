@@ -478,7 +478,10 @@
         @media (max-width: 768px) {
             .menu-icon {
                 display: block;
+            }
 
+            #sentinel-logo {
+                max-width: 80px; /* Logo menor em tablets */
             }
 
             header nav {
@@ -543,7 +546,18 @@
         }
 
         @media (max-width: 480px) {
+            #sentinel-logo {
+                max-width: 60px; /* Logo ainda menor para smartphones */
+            }
+            
+            .logo {
+                gap: 8px; /* Espaço adequado entre o logo e o ícone do menu */
+            }
+
             .partner-logo img {
+                width: 120px;
+                height: 120px;
+            }
             
         .logo {
             font-size: 1.5rem;
@@ -553,13 +567,6 @@
             gap: 10px;
             padding-left: 10px;
         }
-
-
-
-                width: 120px;
-                height: 120px;
-            }
-
             .contact-form input,
             .contact-form textarea {
                 font-size: 0.9rem;
