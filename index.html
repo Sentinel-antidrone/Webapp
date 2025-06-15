@@ -274,8 +274,15 @@
             line-height: 1.6;
         }
 
-        .btn-pdf {
+        .btn-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
             margin-top: 20px;
+        }
+
+        .btn-pdf {
             padding: 10px 20px;
             background-color: #007BFF;
             color: white;
@@ -529,6 +536,16 @@
                 display: block;
             }
 
+            .btn-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-pdf {
+                width: 100%;
+                max-width: 250px;
+            }
+
             header nav {
                 display: none;
                 flex-direction: column;
@@ -720,7 +737,11 @@
             data-en="Our solution leverages computer vision and machine learning, utilizing cameras to monitor airspace and detect drones in real-time. The system maintains continuous visual tracking of identified drones, enabling a directional jammer or antenna to remain precisely aimed for potential neutralization. Beyond detection, the system incorporates a user-friendly web application where users can monitor the system's status and receive instant notifications with photographic evidence and timestamps." 
             data-pt="A nossa solução utiliza visão computacional e machine learning, recorrendo a câmeras para monitorizar o espaço aéreo e detetar drones em tempo real. O sistema mantém um rastreamento visual contínuo dos drones identificados, permitindo que um inibidor direcional ou antena permaneça precisamente apontado para possível neutralização. Para além da deteção, o sistema incorpora uma aplicação web intuitiva onde os utilizadores podem monitorizar o estado do sistema e receber notificações instantâneas com evidências fotográficas e registos temporais."> 
         </p>
-        <button class="btn-pdf" onclick="openPDF()"data-en="Project Proposal" data-pt="Proposta de Projeto"></button>
+        <div class="btn-container">
+            <button class="btn-pdf" onclick="openInitialPDF()" data-en="Project Proposal" data-pt="Proposta de Projeto"></button>
+            <button class="btn-pdf" onclick="openMidtermPDF()" data-en="Midterm Pitchdeck" data-pt="Pitchdeck Intermédio"></button>
+            <button class="btn-pdf" onclick="openFinalPDF()" data-en="Final Pitchdeck" data-pt="Pitchdeck Final"></button>
+        </div>
     </section>
 
     <section id="team" class="team">
@@ -800,7 +821,7 @@
         <p data-en="Check out our explanatory video about the Sentinel Anti-Drone project." data-pt="Veja o nosso vídeo explicativo sobre o projeto Sentinel Anti-Drone."></p>
         <div class="video-container">
             <iframe width="1280" height="720" 
-                src="https://www.youtube.com/embed/r8R_vuewTJc" 
+                src="https://www.https://www.youtube.com/embed/E_1_5yY22-Q" 
                 title="YouTube video player" 
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -939,8 +960,16 @@
             });
         });
 
-        function openPDF() {
+        function openInitialPDF() {
             window.open('Anti-Drone__Initial_Project_Proposal.pdf', '_blank');
+        }
+
+        function openMidtermPDF() {
+            window.open('grupo25_electrocap mid-program pitch deck.pdf', '_blank');
+        }
+
+        function openFinalPDF() {
+            window.open('ElectroCap_pitch_deck_grupo25.pdf', '_blank');
         }
     </script>
 </body>
