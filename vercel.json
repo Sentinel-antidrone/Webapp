@@ -1,20 +1,21 @@
 {
-    "version": 2,
-    "builds": [
-      { "src": "*.html", "use": "@vercel/static" },
-      { "src": "public/**", "use": "@vercel/static" },
-      { "src": "images/**", "use": "@vercel/static" }
-    ],
-    "routes": [
-      { "handle": "filesystem" },
-      { "src": "/blog", "dest": "/blog.html" },
-      { "src": "/post_([1-5])(.*)", "dest": "/public/posts/post_$1.html" },
-      { "src": "public/posts/post_([1-5])(.*)", "dest": "/public/posts/post_$1.html" },
-      { "src": "public/posts/post_([1-5]).html", "dest": "public/posts/post_$1.html" },
-      { "src": "/images/(.*)", "dest": "/images/$1" },
-      { "src": "/LiveData", "dest": "/LiveData.html" },
-      { "src": "/(.*\\.(js|css|jpg|jpeg|png|gif|ico|svg))", "dest": "/$1" },
-      { "src": "/", "dest": "/index.html" },
-      { "src": "/(.*)", "dest": "/index.html" }
-    ]
-  }
+  "version": 2,
+  "builds": [
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "public/**", "use": "@vercel/static" },
+    { "src": "images/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/blog", "dest": "/blog.html" },
+    { "src": "/post_([0-9]+)(.*)", "dest": "/public/posts/post_$1.html" },
+    { "src": "public/posts/post_([0-9]+)(.*)", "dest": "/public/posts/post_$1.html" },
+    { "src": "public/posts/post_([0-9]+).html", "dest": "public/posts/post_$1.html" },
+    { "src": "/images/(.*)", "dest": "/images/$1" },
+    { "src": "/public/press/(.*\\.pdf)", "dest": "/public/press/$1" },
+    { "src": "/LiveData", "dest": "/LiveData.html" },
+    { "src": "/(.*\\.(js|css|jpg|jpeg|png|gif|ico|svg|pdf))", "dest": "/$1" },
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
