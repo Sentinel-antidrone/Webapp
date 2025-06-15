@@ -114,6 +114,14 @@
             padding-left: 10px;
         }
 
+        #sentinel-logo {
+            max-width: 120px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 0;
+            transition: max-width 0.3s ease;
+        }
+
         header nav {
             display: flex;
             gap: 15px;
@@ -546,6 +554,10 @@
                 max-width: 250px;
             }
 
+            #sentinel-logo {
+                max-width: 100px; /* Tamanho reduzido para tablets */
+            }
+
             header nav {
                 display: none;
                 flex-direction: column;
@@ -603,6 +615,14 @@
             .partner-logo img {
                 width: 120px;
                 height: 120px;
+            }
+
+            #sentinel-logo {
+                max-width: 80px; /* Tamanho ainda menor para smartphones */
+            }
+            
+            .logo {
+                gap: 5px; /* Reduz o espaço entre o logo e o ícone do menu */
             }
 
             .contact-form input,
@@ -681,7 +701,6 @@
                 src="/public/images/Logo.png" 
                 alt="Sentinel Logo" 
                 id="sentinel-logo"
-                style="max-width: 120px; width: 100%; height: auto; margin-bottom: 0;">
             <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
         </div>
         <nav>
