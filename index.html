@@ -99,6 +99,7 @@
             z-index: 1000;
             width: 100%;
             transition: background-color 0.3s;
+            min-height: 70px;
         }
 
         body.dark-mode header {
@@ -112,6 +113,7 @@
             align-items: center;
             gap: 10px;
             padding-left: 10px;
+            flex: 1;
         }
 
         #sentinel-logo {
@@ -120,6 +122,19 @@
             height: auto;
             margin-bottom: 0;
             transition: max-width 0.3s ease;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            padding: 5px;
+            margin-left: auto;
+        }
+
+        .menu-icon:hover {
+            color: #007BFF;
         }
 
         header nav {
@@ -533,128 +548,36 @@
             font-size: 1.8rem;
             cursor: pointer;
             transition: color 0.3s;
+            padding: 5px;
+            margin-left: auto;
         }
 
         .menu-icon:hover {
             color: #007BFF;
         }
 
-        @media (max-width: 768px) {
+        /* Melhorias para o layout móvel */
+        @media (min-width: 769px) {
             .menu-icon {
-                display: block;
-            }
-
-            .btn-container {
-                flex-direction: column;
-                align-items: center;
+                display: none !important;
             }
             
-            .btn-pdf {
-                width: 100%;
-                max-width: 250px;
+            .toggle-container {
+                display: flex !important;
             }
-
-            #sentinel-logo {
-                max-width: 100px; /* Tamanho reduzido para tablets */
-            }
-
-            header nav {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                right: 0;
-                background-color: #ececec;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                padding: 20px;
-                z-index: 100;
-            }
-
-            body.dark-mode header nav {
-                background-color: #1e1e1e;
-            }
-
-            header nav.active {
-                display: flex;
-            }
-
-            header nav a {
-                padding: 10px;
-                font-size: 1.2rem;
-                text-align: center;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            }
-
-            body.dark-mode header nav a {
-                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            }
+        }
         
-            .partners-container {
-                flex-direction: row;
-            }
-
-            .partners-container .partner-logo {
-                margin-bottom: 10px;
-            }
-
-            .contact-form button {
-                padding: 10px 15px;
-            }
-
-            .contact-details h3 {
-                font-size: 1.5rem;
-            }
-
-            .contact-details p {
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .partner-logo img {
-                width: 120px;
-                height: 120px;
-            }
-
-            #sentinel-logo {
-                max-width: 80px; /* Tamanho ainda menor para smartphones */
+        @media (max-width: 768px) {
+            html {
+                scroll-padding-top: 80px;
             }
             
-            .logo {
-                gap: 5px; /* Reduz o espaço entre o logo e o ícone do menu */
+            .hero h1 {
+                font-size: 2.2rem;
             }
-
-            .contact-form input,
-            .contact-form textarea {
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header {
-                width: 100%;
-                padding: 10px;
-            }
-
-            .hero, 
-            .about,
-            .team,
-            .project,
-            .partners-section,
-            .contacts {
-                width: 100%;
-                padding-left: 10px;
-                padding-right: 10px;
-            }
-
-            .team-container {
-                padding: 0 10px;
-            }
-
-            form {
-                width: 100%;
-                padding: 15px;
+            
+            .hero p {
+                font-size: 1.2rem;
             }
         }
 
