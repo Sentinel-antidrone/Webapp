@@ -1122,8 +1122,7 @@
             <span class="status-text" id="system-status-text" data-en="System Online" data-pt="Sistema Online" style="margin-left: 10px;">System Online</span>
         </div>
 
-        <button class="refresh-button" id="refresh-data" data-en="Refresh Data" data-pt="Atualizar Dados">Refresh Data</button>
-        <button class="refresh-button active" id="auto-update-toggle" onclick="toggleAutoUpdate()" style="margin-top: 10px;" data-en="Pause Auto-Update" data-pt="Pausar Atualização Automática">Pause Auto-Update</button>
+        <button class="refresh-button active" id="auto-update-toggle" onclick="toggleAutoUpdate()" data-en="Pause Auto-Update" data-pt="Pausar Atualização Automática">Pause Auto-Update</button>
 
         <div class="detection-list" id="detection-container">
             <div class="no-detections" id="no-detections" data-en="Loading detections..." data-pt="Carregando detecções...">Loading detections...</div>
@@ -1206,8 +1205,8 @@
 
         // Store the last detection count to check for new detections
         let lastDetectionCount = 0;
-        let autoUpdateInterval;
         let autoUpdateActive = true;
+        let firebaseListener = null;
         
         // Create an audio element for the notification sound
         const notificationSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
@@ -1471,36 +1470,64 @@
         
         // Auto-update functionality
         function startAutoUpdate() {
-            if (autoUpdateInterval) {
-                clearInterval(autoUpdateInterval);
-            }
-            
-            autoUpdateInterval = setInterval(() => {
-                if (autoUpdateActive) {
-                    fetchDetections();
-                }
-            }, 5000); // Update every 5 seconds
-            
             autoUpdateActive = true;
             updateAutoUpdateButtonText();
+            
+            // Set up Firebase listener for new detections
+            setupDetectionListener();
         }
         
         function stopAutoUpdate() {
-            if (autoUpdateInterval) {
-                clearInterval(autoUpdateInterval);
-                autoUpdateInterval = null;
-            }
-            
             autoUpdateActive = false;
             updateAutoUpdateButtonText();
+            
+            // Remove Firebase listener
+            if (firebaseListener) {
+                const detectionsRef = database.ref('detections');
+                detectionsRef.off('child_added', firebaseListener);
+                firebaseListener = null;
+            }
         }
         
         function toggleAutoUpdate() {
             if (autoUpdateActive) {
                 stopAutoUpdate();
             } else {
+                // When resuming, fetch all detections to get what happened while paused
+                fetchDetections();
                 startAutoUpdate();
             }
+        }
+        
+        function setupDetectionListener() {
+            if (!autoUpdateActive) return;
+            
+            const detectionsRef = database.ref('detections');
+            
+            // Remove existing listener if any
+            if (firebaseListener) {
+                detectionsRef.off('child_added', firebaseListener);
+            }
+            
+            // Create new listener
+            firebaseListener = function(snapshot) {
+                if (autoUpdateActive) {
+                    // Show alert for new detection
+                    document.getElementById('detection-alert').style.display = 'block';
+                    
+                    // Play notification sound
+                    try {
+                        notificationSound.play().catch(e => console.log('Could not play notification sound:', e));
+                    } catch (e) {
+                        console.log('Could not play notification sound:', e);
+                    }
+                    
+                    // Refresh the detection list to include new detection
+                    fetchDetections();
+                }
+            };
+            
+            detectionsRef.on('child_added', firebaseListener);
         }
         
         function updateAutoUpdateButtonText() {
@@ -1518,31 +1545,19 @@
             }
         }
 
-        // Manual refresh button
-        document.getElementById('refresh-data').addEventListener('click', () => fetchDetections());
-        
         // When page is hidden (user switches tabs), pause auto-update
         document.addEventListener("visibilitychange", function() {
             if (document.hidden) {
-                // Don't stop the interval entirely, just pause the active state
+                // Pause notifications when tab is hidden
                 autoUpdateActive = false;
                 updateAutoUpdateButtonText();
             } else {
-                // When page becomes visible again, resume updates and do an immediate update
+                // When page becomes visible again, resume updates and refresh data
                 autoUpdateActive = true;
                 updateAutoUpdateButtonText();
-                fetchDetections();
+                fetchDetections(); // Get any detections that happened while tab was hidden
+                setupDetectionListener(); // Resume listener
             }
-        });
-        
-        // Set up a real-time listener for new detections
-        const detectionsRef = database.ref('detections');
-        detectionsRef.on('child_added', (snapshot) => {
-            // Refresh the display when a new detection is added
-            fetchDetections();
-            
-            // Also show the alert
-            document.getElementById('detection-alert').style.display = 'block';
         });
     </script>
 </body>
