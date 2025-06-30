@@ -1215,6 +1215,7 @@
         let autoUpdateActive = true;
         let firebaseListener = null;
         let alertTimeout = null; // For auto-hiding alert
+        let pageLoadTime = Date.now(); // Store when page was loaded
         
         // Create an audio element for the notification sound
         const notificationSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
@@ -1400,11 +1401,12 @@
                     document.getElementById('last-update').textContent = timeString;
                     
                     // Show alert if there are recent detections (within last hour)
+                    // BUT only if this is not the initial page load
                     const currentTime = Date.now();
                     const oneHourAgo = currentTime - (60 * 60 * 1000);
                     let hasRecentDetections = false;
                     
-                    if (detectionsData) {
+                    if (detectionsData && !isInitialLoad) {
                         Object.values(detectionsData).forEach(detection => {
                             if (detection.timestamp > oneHourAgo) {
                                 hasRecentDetections = true;
@@ -1412,11 +1414,11 @@
                         });
                     }
                     
-                    // Show or hide alert based on recent detections
-                    if (hasRecentDetections) {
+                    // Show or hide alert based on recent detections (only if not initial load)
+                    if (hasRecentDetections && !isInitialLoad) {
                         showDetectionAlert();
-                    } else {
-                        hideDetectionAlert();
+                    } else if (isInitialLoad) {
+                        hideDetectionAlert(); // Ensure alert is hidden on initial load
                     }
                 })
                 .catch((error) => {
@@ -1552,25 +1554,39 @@
                 detectionsRef.off('child_added', firebaseListener);
             }
             
-            // Create new listener
-            firebaseListener = function(snapshot) {
-                if (autoUpdateActive) {
-                    // Show alert for new detection
-                    showDetectionAlert();
-                    
-                    // Play notification sound
-                    try {
-                        notificationSound.play().catch(e => console.log('Could not play notification sound:', e));
-                    } catch (e) {
-                        console.log('Could not play notification sound:', e);
+            // Wait a bit before setting up listener to avoid triggering on existing data
+            setTimeout(() => {
+                if (!autoUpdateActive) return; // Check again in case it was paused
+                
+                // Update page load time to current time when listener is actually set up
+                pageLoadTime = Date.now();
+                
+                // Create new listener
+                firebaseListener = function(snapshot) {
+                    if (autoUpdateActive) {
+                        const detection = snapshot.val();
+                        
+                        // Only process if this detection happened after page load
+                        // This prevents sounds/alerts for old detections when page loads
+                        if (detection && detection.timestamp && detection.timestamp > pageLoadTime) {
+                            // Show alert for new detection
+                            showDetectionAlert();
+                            
+                            // Play notification sound
+                            try {
+                                notificationSound.play().catch(e => console.log('Could not play notification sound:', e));
+                            } catch (e) {
+                                console.log('Could not play notification sound:', e);
+                            }
+                            
+                            // Refresh the detection list to include new detection
+                            fetchDetections();
+                        }
                     }
-                    
-                    // Refresh the detection list to include new detection
-                    fetchDetections();
-                }
-            };
-            
-            detectionsRef.on('child_added', firebaseListener);
+                };
+                
+                detectionsRef.on('child_added', firebaseListener);
+            }, 2000); // Wait 2 seconds after page load before setting up listener
         }
         
         function updateAutoUpdateButtonText() {
@@ -1588,18 +1604,11 @@
             }
         }
 
-        // When page is hidden (user switches tabs), pause auto-update
+        // When page visibility changes, just update the display but keep monitoring
         document.addEventListener("visibilitychange", function() {
-            if (document.hidden) {
-                // Pause notifications when tab is hidden
-                autoUpdateActive = false;
-                updateAutoUpdateButtonText();
-            } else {
-                // When page becomes visible again, resume updates and refresh data
-                autoUpdateActive = true;
-                updateAutoUpdateButtonText();
-                fetchDetections(); // Get any detections that happened while tab was hidden
-                setupDetectionListener(); // Resume listener
+            if (!document.hidden) {
+                // When page becomes visible again, refresh data to show any detections that happened while away
+                fetchDetections();
             }
         });
     </script>
